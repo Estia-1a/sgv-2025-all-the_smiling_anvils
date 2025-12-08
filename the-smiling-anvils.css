@@ -23,7 +23,7 @@ nav a {
 nav a:hover {
             background: #1abc9c;
 }
-.search-bar {
+.barre_de_recherche {
   text-align: center;
   margin: 20px;
 }
@@ -41,13 +41,13 @@ nav a:hover {
   border-radius: 5px;
   cursor: pointer;
 }
-.listings {
+.liste_des_annonces {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
 }
-.card {
+.annonce {
   background: white;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
