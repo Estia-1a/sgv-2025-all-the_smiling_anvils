@@ -4,81 +4,130 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="the-smiling-anvils.css">
+    <link rel="stylesheet" href="modifs-Css.css">
     <title>The Anvils Housing Website</title>
 </head>
 
-
 <body>
-    <header>
-        <img class=logo src="media/pictures/the-smiling-anvils-housing-picture.png" alt="logo" width="200" height="200">
+    <header class="entête">
+        <img class="logo" src="pictures/the-smiling-anvils-housing-picture.png" alt="logo" width="100" height="100">
         <h1>The Anvils Housing</h1>
-        <p>Trouvez votre logement étudiant facilement et cela avec des critères encore jamais vu dans les domaines de l'immobilier</p>
-        <a href="mon-compte.html" class="btn-compte">Mon compte</a>
-        <a href="favoris.html" class="btn-favoris">Favoris</a>
+        <button class="favoris">Favoris</button>
+        <button class="profil">Profil</button>
+        <img class="photodeprofil" src="" alt="photodeprofil" width="150" height="200">
+        <div>Trouvez votre logement étudiant facilement et cela avec des critères encore jamais vu dans l'immobilier</div>
+        <div class="barre_de_recherche"> <!-- Ceci permet de gérer la partie css en créant une partie " .barre_de_recherche" -->
+            <input type="text" placeholder="Rechercher une ville ou université..."> <!-- Ceci permet d'afficher dans la barre de recherche la phrase "Rechercher une ville ou université..."-->
+            <button>Rechercher</button>
+        </div>    
+        <footer>
+            <a>Accueil</a>
+            <a>Dernières Annonces</a>
+            <a>Contact</a>
+        </footer>
     </header>
-    <footer>
-        <a>Accueil</a>
-        <a>Dernières Annonces</a>
-        <a>Contact</a>
-    </footer>
-    
-    <nav>
-        <p> Pub</p>
-    </nav>
 
-    <div class="barre_de_recherche"> <!-- Ceci permet de gérer la partie css en créant une partie " .barre_de_recherche" -->
-        <input type="text" placeholder="Rechercher une ville ou université..."> <!-- Ceci permet d'afficher dans la barre de recherche la phrase "Rechercher une ville ou université..."-->
-        <button>Rechercher</button>
-    </div>
-    <section class="liste_des_annonces"> <!-- Ceci permet de gérer la partie css en créant une partie " .liste_des_annonces" -->
-        <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
-            <img src="media/pictures/colocationESTIA.avif" alt="studio">
-            <h3>Appartement pour une colocation entre étudiants ESTIA aimant faire la fête, faire des rencontres et qui aiment la mécanique</h3> <!-- Type d'appartement -->
-            <p>A partir de 500€/mois</p> <!-- Prix en euro/mois -->
-            <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
-            <p>50m^2 - 4 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
-            <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
-            <footer>
-                <p>Disponibile à partir du 39 jan. 2077 </p>
-            </footer>          
-        </div>
-        <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
-            <img src="media/pictures/studioESTIA.jpg" alt="studio">
-            <h3>Studio pour étudiants ESTIA aimant la tranquilité, la lecture et les apéros</h3> <!-- Type d'appartement -->
-            <p>A partir de 600€/mois</p> <!-- Prix en euro/mois -->
-            <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
-            <p>20m^2 - 1 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
-            <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
-            <footer>
-                <p>Disponibile à partir du 64 fév. 2192 </p>
-            </footer>          
-        </div>
-        <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
-            <img src="media/pictures/colocationESTIA.avif" alt="studio">
-            <h3>Studio pour une colocation entre étudiants ESTIA aimant le sport, </h3> <!-- Type d'appartement -->
-            <p>A partir de 450€/mois</p> <!-- Prix en euro/mois -->
-            <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
-            <p>43m^2 - 3 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
-            <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
-            <footer>
-                <p>Disponibile à partir du 90 oct. 1816 </p>
-            </footer>
-        </div>
+    <section class="containers">
+        <nav>
+            <h1>Publicité: Armée de l'Air</h1>
+            <img class="Photo_Pub1" src="" alt="Photo_Pub1" width="150" height="200">
+            <p>Bonjour, vous rêvez de devenir aviateur, ne vous inquiétez pas, sauf si vous avez dépasser les 40 ans ou que vous avez une mauvaise santé c'est déjà mort pour vous, désolé. On ne dit rien habituellement car c'est politiquement incorrect mais c'est pas grave. En tout cas rejoignez nous c'est bien ! Engagezvous sur le site : Engagez vous.fr</p>
+            <h1>Publicité: Nouvelle Voiture</h1>
+            <img class="Photo_Pub2" src="" alt="Photo_Pub2" width="150" height="200">
+            <p></p>
+        </nav>
+
+        <section class="liste_des_annonces"> <!-- Ceci permet de gérer la partie css en créant une partie " .liste_des_annonces" -->
+        
+            <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
+                <img src="pictures/colocationESTIA.avif" alt="studio">
+                <h3>Appartement pour une colocation entre étudiants ESTIA aimant faire la fête, faire des rencontres et qui aiment la mécanique</h3> <!-- Type d'appartement -->
+                <p>A partir de 500€/mois</p> <!-- Prix en euro/mois -->
+                <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
+                <p>50m^2 - 4 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
+                <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
+                <footer>
+                    <p1>Disponibile à partir du 39 jan. 2077 </p1>
+                </footer>          
+            </div>
+
+            <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
+                <img src="pictures/studioESTIA.jpg" alt="studio">
+                <h3>Studio pour étudiants ESTIA aimant la tranquilité, la lecture et les apéros</h3> <!-- Type d'appartement -->
+                <p>A partir de 600€/mois</p> <!-- Prix en euro/mois -->
+                <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
+                <p>20m^2 - 1 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
+                <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
+                <footer>
+                    <p1>Disponibile à partir du 64 fév. 2192 </p1>
+                </footer>          
+            </div>
+
+            <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
+                <img src="pictures/colocationESTIA.avif" alt="studio">
+                <h3>Studio pour une colocation entre étudiants ESTIA aimant le sport, </h3> <!-- Type d'appartement -->
+                <p>A partir de 450€/mois</p> <!-- Prix en euro/mois -->
+                <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
+                <p>43m^2 - 3 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
+                <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
+                <footer>
+                    <p1>Disponibile à partir du 90 oct. 1816 </p1>
+                </footer>
+            </div>
+
+            <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
+                <img src="pictures/colocationESTIA.avif" alt="studio">
+                <h3>Appartement pour une colocation entre étudiants ESTIA aimant faire la fête, faire des rencontres et qui aiment la mécanique</h3> <!-- Type d'appartement -->
+                <p>A partir de 500€/mois</p> <!-- Prix en euro/mois -->
+                <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
+                <p>50m^2 - 4 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
+                <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
+                <footer>
+                    <p1>Disponibile à partir du 39 jan. 2077 </p1>
+                </footer>          
+            </div>
+
+            <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
+                <img src="pictures/studioESTIA.jpg" alt="studio">
+                <h3>Studio pour étudiants ESTIA aimant la tranquilité, la lecture et les apéros</h3> <!-- Type d'appartement -->
+                <p>A partir de 600€/mois</p> <!-- Prix en euro/mois -->
+                <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
+                <p>20m^2 - 1 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
+                <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
+                <footer>
+                    <p1>Disponibile à partir du 64 fév. 2192 </p1>
+                </footer>          
+            </div>
+
+            <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
+                <img src="pictures/colocationESTIA.avif" alt="studio">
+                <h3>Studio pour une colocation entre étudiants ESTIA aimant le sport, </h3> <!-- Type d'appartement -->
+                <p>A partir de 450€/mois</p> <!-- Prix en euro/mois -->
+                <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
+                <p>43m^2 - 3 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
+                <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
+                <footer>
+                    <p1>Disponibile à partir du 90 oct. 1816 </p1>
+                </footer>
+            </div>
+        </section>
     </section>
     
-    <footer>
-         <p>
-            <img src="Facebook.PNG" alt="Pélé" width="150"height="150"/>
-            <img src="insta.WEBP"alt="insta" width="100"height="100"/>
-            <img src="twitter.PNG" alt="twitter" width="100" height="100"/>
-            <img src="ytb.PNG" alt="ytb" width="100" height="100"/>
-            <img src="linkedin.WEBP" alt="linkedin" width="100" height="100"/>
-        
-         </p>
+    <footer class="finalpart">
+         <h1>Communications :</h1>
+         <a href="lien.html">lien hypertexte</a>
+
+         <a href="lien.html">lien hypertexte</a>
+
+         <a href="lien.html">lien hypertexte</a>
+
+         <a href="lien.html">lien hypertexte</a>
+
+         <a href="lien.html">lien hypertexte</a>
+
+         <a href="lien.html">lien hypertexte</a>
+
     </footer>
 
 </body>
 </html>
-
-
