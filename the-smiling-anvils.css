@@ -4,36 +4,62 @@ body {
   padding: 0;
   background: #f8f8f8;
 }
+
 header {
   background: #28333f;
   color: white;
   padding: 15px;
-  text-align: center;
 }
 
-footer {
+.logo {
   display: flex;
-  justify-content: center;
-  background: #28333f;
+  justify-content: flex-start;
 }
-footer a {
+
+h1 {
+  color: #1abc9c;
+  display: flex;
+  justify-content: flex-start;
+}
+
+div {
+  margin: 10px;
+  color: #dadada;
+}
+
+.entête button {
+  padding: 10px 15px;
+  background: #1abc9c;
   color: white;
-  padding: 10px 20px;
-  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
-footer a:hover {
-            background: #1abc9c;
+
+.favori button {
+  padding: 10px 15px;
+  background: #e822d1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
+
 .barre_de_recherche {
+  display: flex;
+  align-items: flex-end;
   text-align: center;
   margin: 20px;
+  background-color: #28333f;
 }
+
 .barre_de_recherche input {
   padding: 10px;
   width: 300px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
 .barre_de_recherche button {
   padding: 10px 15px;
   background: #1abc9c;
@@ -42,30 +68,48 @@ footer a:hover {
   border-radius: 5px;
   cursor: pointer;
 }
+
 .liste_des_annonces {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
+
 .annonce {
   background: white;
+  color: #000000;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   overflow: hidden;
+  width: 300px;
 }
+
 .annonce img {
   width: 100%;
   height: 150px;
   object-fit: cover;
 }
+
 .annonce h3 {
   margin: 10px;
 }
+
 .annonce p {
   margin: 10px;
-  color: #555;
+  color: #282828;
 }
+
+.annonce footer {
+  margin: 0px;
+  color: #f4f4f4;
+  display: flex;
+  align-items: flex-end;
+}
+
 .annonce button {
   margin: 10px;
   padding: 10px;
@@ -74,4 +118,44 @@ footer a:hover {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+section.containers {
+  display: flex;
+  flex-direction: row;
+}
+
+nav{
+  background: white;
+  color: #000000;
+  margin: 10px;
+  width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #28333f;
+}
+
+footer a {
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+footer a:hover {
+  background: #1abc9c;
+}
+
+.finalpart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #28333f;
 }
