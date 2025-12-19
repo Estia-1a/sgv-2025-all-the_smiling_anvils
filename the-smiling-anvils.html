@@ -16,8 +16,29 @@
         <button class="profil">Profil</button>
         <img class="photodeprofil" src="" alt="photodeprofil" width="150" height="200">
         <div>Trouvez votre logement étudiant facilement et cela avec des critères encore jamais vu dans l'immobilier</div>
-        <div class="barre_de_recherche"> <!-- Ceci permet de gérer la partie css en créant une partie " .barre_de_recherche" -->
-            <input type="text" placeholder="Rechercher une ville ou université..."> <!-- Ceci permet d'afficher dans la barre de recherche la phrase "Rechercher une ville ou université..."-->
+            <div class="barre_de_recherche"> <!-- Ceci permet de gérer la partie css en créant une partie " .barre_de_recherche" -->
+                <input type="text" placeholder="Rechercher une ville ou université..."> <!-- Ceci permet d'afficher dans la barre de recherche la phrase "Rechercher une ville ou université..."-->
+                <div class="dropdown">
+                    <button class="dropdown-toggle">Type de logement ▼</button>
+                    <div class="dropdown-menu">
+                        <h3>Type de logement</h3>
+
+                        <label><input type="checkbox"> Appartement</label>
+                        <label><input type="checkbox"> Maison</label>
+                        <label><input type="checkbox"> Studio</label>
+                        <label><input type="checkbox"> Caravane</label>
+                        <label><input type="checkbox"> Mobile Home</label>
+                        <label><input type="checkbox"> Mobile Apple</label>
+                        <label><input type="checkbox"> Cabane Fortnite</label>
+                        <label><input type="checkbox"> Maison squattée</label>
+
+                        <div class="actions">
+                            <button class="clear">Effacer</button>
+                            <button class="apply">Appliquer</button>
+                        </div>
+                    </div>
+                </div>
+
             <button>Rechercher</button>
         </div>    
         <footer>
@@ -44,7 +65,7 @@
                 <h3>Appartement pour une colocation entre étudiants ESTIA aimant faire la fête, faire des rencontres et qui aiment la mécanique</h3> <!-- Type d'appartement -->
                 <p>A partir de 500€/mois</p> <!-- Prix en euro/mois -->
                 <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
-                <p>50m^2 - 4 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
+                <p>50m² - 4 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
                 <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
                 <footer>
                     <p1>Disponibile à partir du 39 jan. 2077 </p1>
@@ -55,8 +76,8 @@
                 <img src="pictures/studioESTIA.jpg" alt="studio">
                 <h3>Studio pour étudiants ESTIA aimant la tranquilité, la lecture et les apéros</h3> <!-- Type d'appartement -->
                 <p>A partir de 600€/mois</p> <!-- Prix en euro/mois -->
-                <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
-                <p>20m^2 - 1 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
+                <p>Localisation : ... 64210, Bidart</p>
+                <p>20m² - 1 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
                 <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
                 <footer>
                     <p1>Disponibile à partir du 64 fév. 2192 </p1>
@@ -67,8 +88,8 @@
                 <img src="pictures/colocationESTIA.avif" alt="studio">
                 <h3>Studio pour une colocation entre étudiants ESTIA aimant le sport, </h3> <!-- Type d'appartement -->
                 <p>A partir de 450€/mois</p> <!-- Prix en euro/mois -->
-                <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
-                <p>43m^2 - 3 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
+                <p>Localisation : ... 64210, Bidart</p>
+                <p>43m² - 3 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
                 <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
                 <footer>
                     <p1>Disponibile à partir du 90 oct. 1816 </p1>
@@ -77,10 +98,10 @@
 
             <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
                 <img src="pictures/colocationESTIA.avif" alt="studio">
-                <h3>Appartement pour une colocation entre étudiants ESTIA aimant faire la fête, faire des rencontres et qui aiment la mécanique</h3> <!-- Type d'appartement -->
+                <h3> ... </h3> <!-- Type d'appartement -->
                 <p>A partir de 500€/mois</p> <!-- Prix en euro/mois -->
-                <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
-                <p>50m^2 - 4 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
+                <p>Localisation : ... 64210, Bidart</p>
+                <p>50m² - 4 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
                 <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
                 <footer>
                     <p1>Disponibile à partir du 39 jan. 2077 </p1>
@@ -91,8 +112,8 @@
                 <img src="pictures/studioESTIA.jpg" alt="studio">
                 <h3>Studio pour étudiants ESTIA aimant la tranquilité, la lecture et les apéros</h3> <!-- Type d'appartement -->
                 <p>A partir de 600€/mois</p> <!-- Prix en euro/mois -->
-                <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
-                <p>20m^2 - 1 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
+                <p>Localisation : ... 64210, Bidart</p>
+                <p>20m² - 1 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
                 <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
                 <footer>
                     <p1>Disponibile à partir du 64 fév. 2192 </p1>
@@ -104,7 +125,7 @@
                 <h3>Studio pour une colocation entre étudiants ESTIA aimant le sport, </h3> <!-- Type d'appartement -->
                 <p>A partir de 450€/mois</p> <!-- Prix en euro/mois -->
                 <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
-                <p>43m^2 - 3 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
+                <p>43m² - 3 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
                 <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
                 <footer>
                     <p1>Disponibile à partir du 90 oct. 1816 </p1>
@@ -114,21 +135,20 @@
     </section>
     
     <footer class="finalpart">
-         <h1>Communications :</h1>
-         <a href="lien.html">lien hypertexte</a>
+        <h1>Communications :</h1>
+        <a href="lien.html">lien hypertexte</a>
+        
+        <a href="lien.html">lien hypertexte</a>
 
-         <a href="lien.html">lien hypertexte</a>
+        <a href="lien.html">lien hypertexte</a>
 
-         <a href="lien.html">lien hypertexte</a>
+        <a href="lien.html">lien hypertexte</a>
 
-         <a href="lien.html">lien hypertexte</a>
+        <a href="lien.html">lien hypertexte</a>
 
-         <a href="lien.html">lien hypertexte</a>
-
-         <a href="lien.html">lien hypertexte</a>
+        <a href="lien.html">lien hypertexte</a>
 
     </footer>
 
 </body>
 </html>
-
