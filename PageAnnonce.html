@@ -3,43 +3,1589 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PageAnnonce</title>
-</head>
+    <title>Page Annonce</title>
+    <style>
+        /* ========== STYLES GÉNÉRAUX ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Inclut les bordures et padding dans la largeur/hauteur */
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #212529;
+            line-height: 1.6;
+            padding-top: 180px;
+        }
+
+        /* ========== EN-TÊTE (HEADER) ========== */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: stretch;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .logo::before {
+            display: none;
+        }
+
+        .logo-sous-titre {
+            font-size: 14px;
+            font-weight: 600;
+            color: #6c757d;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-left: 0;
+        }
+
+        /* ========== BARRE DE RECHERCHE ========== */
+        .barre-recherche-container {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            border-radius: 8px;
+        }
+
+        .champ-recherche {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: white;
+            color: #333;
+        }
+
+        .champ-recherche::placeholder {
+            color: #999;
+        }
+
+        .champ-recherche:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+
+        /* ========== FILTRES DROPDOWN ========== */
+        .conteneur-filtres {
+            display: flex;
+            gap: 15px;
+            align-items: stretch;
+            flex-wrap: wrap;
+        }
+
+        .dropdown {
+            position: relative;
+            background-color: white;
+            border-radius: 4px;
+            overflow: visible;
+        }
+
+        .dropdown-bouton {
+            background-color: white;
+            color: #333;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 150px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-bouton:hover {
+            background-color: #f0f0f0;
+        }
+
+        .dropdown-bouton::after {
+            content: "▼";
+            font-size: 10px;
+            color: #666;
+        }
+
+        /* Dropdown menu (caché par défaut) */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 100;
+            margin-top: 5px;
+        }
+
+        /* Afficher le menu au hover */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu option-item,
+        .dropdown-menu div {
+            padding: 12px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            color: #333;
+            font-size: 14px;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown-menu option-item:last-child,
+        .dropdown-menu div:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu option-item:hover,
+        .dropdown-menu div:hover {
+            background-color: #f9f9f9;
+        }
+
+        /* ========== BOUTON RECHERCHER ========== */
+        .bouton-rechercher {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            align-self: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .bouton-rechercher:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .bouton-rechercher:active {
+            transform: translateY(0);
+        }
+
+        /* ========== NAVIGATION ========== */
+        nav {
+            display: flex;
+            gap: 20px; /* Espace entre les boutons */
+            align-items: center;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: #495057;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        nav button:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ========== CONTENEUR PRINCIPAL ========== */
+        .conteneur {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 30px;
+        }
+
+        .lien-retour {
+            color: rgba(102, 126, 234, 0.5);
+            text-decoration: none;
+            margin-bottom: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lien-retour:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+
+        /* ========== DISPOSITION PRINCIPALE (2 COLONNES) ========== */
+        .disposition-principale {
+            display: block;
+            width: 100%;
+        }
+
+        .colonne-gauche {
+            float: left;
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-right: 30px;
+        }
+
+        .colonne-droite {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Section pour le retour et le prix côte à côte */
+        .section-retour-prix {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* ========== CARROUSEL D'IMAGES (CSS PUR) ========== */
+        .conteneur-carrousel {
+            position: relative;
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            overflow: hidden; /* Cache les images qui dépassent */
+            border-radius: 8px; /* Coins arrondis */
+            background-color: #000;
+            aspect-ratio: 16 / 10;
+            min-height: 400px;
+        }
+
+        /* Masquer les radio buttons */
+        .commande-carrousel {
+            display: none;
+        }
+
+        .diapositives-carrousel {
+            display: flex;
+            position: relative;
+            width: 100%;
+            height: 500px;
+        }
+
+        .diapositive-carrousel {
+            min-width: 100%;
+            height: 500px;
+            opacity: 0;
+            transition: opacity 0.5s ease; /* Animation fluide */
+            position: absolute;
+        }
+
+        .diapositive-carrousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Remplit l'espace sans déformer l'image */
+        }
+
+        /* Afficher la diapositive sélectionnée */
+        #diapositive1:checked ~ .diapositives-carrousel .diapositive-carrousel:nth-child(1),
+        #diapositive2:checked ~ .diapositives-carrousel .diapositive-carrousel:nth-child(2),
+        #diapositive3:checked ~ .diapositives-carrousel .diapositive-carrousel:nth-child(3),
+        #diapositive4:checked ~ .diapositives-carrousel .diapositive-carrousel:nth-child(4) {
+            opacity: 1;
+            z-index: 5;
+            position: relative;
+        }
+
+        /* Boutons précédent et suivant du carrousel */
+        .bouton-carrousel {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+        }
+
+        .bouton-carrousel:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .bouton-precedent {
+            left: 10px;
+        }
+
+        .bouton-suivant {
+            right: 10px;
+        }
+
+        /* Montrer/masquer les boutons selon la diapositive */
+        #diapositive1:checked ~ .bouton-precedent[data-prev="4"],
+        #diapositive1:checked ~ .bouton-suivant[data-next="2"],
+        #diapositive2:checked ~ .bouton-precedent[data-prev="1"],
+        #diapositive2:checked ~ .bouton-suivant[data-next="3"],
+        #diapositive3:checked ~ .bouton-precedent[data-prev="2"],
+        #diapositive3:checked ~ .bouton-suivant[data-next="4"],
+        #diapositive4:checked ~ .bouton-precedent[data-prev="3"],
+        #diapositive4:checked ~ .bouton-suivant[data-next="1"] {
+            display: block;
+        }
+
+        .bouton-carrousel {
+            display: none;
+        }
+
+        /* Points de navigation du carrousel */
+        .points-carrousel {
+            text-align: center;
+            padding: 15px 0;
+            position: relative;
+            z-index: 8;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .point-carrousel {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+            padding: 0;
+        }
+
+        .point-carrousel:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Marquer le point actif */
+        #diapositive1:checked ~ .points-carrousel .point-carrousel:nth-child(1),
+        #diapositive2:checked ~ .points-carrousel .point-carrousel:nth-child(2),
+        #diapositive3:checked ~ .points-carrousel .point-carrousel:nth-child(3),
+        #diapositive4:checked ~ .points-carrousel .point-carrousel:nth-child(4) {
+            background-color: #3498db;
+        }
+
+        /* ========== CONTENU PRINCIPAL ========== */
+        .contenu-principal {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 100%;
+            clear: both;
+        }
+
+        h1 {
+            color: #212529;
+            margin-bottom: 15px;
+            font-size: 32px;
+            font-weight: 800;
+            position: relative;
+            padding-bottom: 0;
+            width: 100%;
+        }
+
+        h1::after {
+            display: none;
+        }
+
+        .title-section {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 3px solid #f8f9fa;
+        }
+
+        .title-section h1 {
+            margin-bottom: 15px;
+        }
+
+        .location {
+            color: #6c757d;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s;
+        }
+
+        .badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .description-section {
+            margin: 30px 0;
+        }
+
+        .description-section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .description-section h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 3px;
+        }
+
+        .description-section p {
+            color: #495057;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            padding: 25px;
+            border-radius: 16px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #495057;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            flex-shrink: 0;
+        }
+
+        /* Bloc d'information (titre + description) */
+        .bloc-info {
+            margin-bottom: 25px;
+            padding: 0;
+            background-color: transparent;
+            border-radius: 0;
+            border-left: none;
+            transition: none;
+        }
+
+        .colonne-atouts .bloc-info {
+            border-left-color: transparent;
+        }
+
+        .bloc-info:hover {
+            background-color: transparent;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .bloc-info:last-child {
+            margin-bottom: 0;
+        }
+
+        .bloc-info h2 {
+            color: #212529;
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .bloc-info p {
+            color: #495057;
+            line-height: 1.8;
+            font-size: 15px;
+            margin: 0;
+        }
+
+        /* ========== SECTION PROPRIETAIRE ========== */
+        .section-proprietaire {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            padding: 25px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .proprietaire-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .proprietaire-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            flex-shrink: 0;
+        }
+
+        .proprietaire-info {
+            flex: 1;
+        }
+
+        .proprietaire-nom {
+            font-size: 16px;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 4px;
+        }
+
+        .proprietaire-type {
+            color: #6c757d;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .proprietaire-badge {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .proprietaire-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .proprietaire-stat {
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .proprietaire-stat-value {
+            font-size: 16px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .proprietaire-stat-label {
+            font-size: 11px;
+            color: #6c757d;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .proprietaire-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .proprietaire-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .proprietaire-about {
+            padding: 12px;
+            background: white;
+            border-radius: 10px;
+            font-size: 13px;
+            color: #495057;
+            line-height: 1.6;
+            border-left: 4px solid #667eea;
+        }
+
+        /* ========== SECTION CARTE (LOCALISATION) ========== */
+        .section-carte {
+            margin-top: 20px;
+            padding: 0;
+        }
+
+        .titre-carte {
+            font-size: 18px;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 15px;
+        }
+
+        .carte-conteneur {
+            width: 100%;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            position: relative;
+        }
+
+        .carte-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .carte-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #6c757d;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* ========== DISPOSITION DESCRIPTIONS ET ATOUTS ========== */
+        .disposition-descriptions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 25px;
+            width: 100%;
+        }
+
+        .colonne-description {
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
+            border-left: none;
+            box-shadow: none;
+            transition: none;
+        }
+
+        .colonne-description:hover {
+            box-shadow: none;
+            transform: none;
+        }
+
+        .colonne-atouts {
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
+            border-left: none;
+            box-shadow: none;
+            transition: none;
+        }
+
+        .colonne-atouts:hover {
+            box-shadow: none;
+            transform: none;
+        }
+
+        .colonne-description h3,
+        .colonne-atouts h3 {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #212529;
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .colonne-atouts h3 {
+            border-bottom-color: transparent;
+        }
+
+        .colonne-description h3::before {
+            content: "📝";
+            font-size: 28px;
+        }
+
+        .colonne-atouts h3::before {
+            content: "⭐";
+            font-size: 28px;
+        }
+
+        /* ========== BOÎTE DE PRIX ========== */
+        .boite-prix {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            color: #212529;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 0;
+            flex-shrink: 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            min-width: 240px;
+            transition: all 0.3s ease;
+            border: 3px solid rgba(102, 126, 234, 0.3);
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .boite-prix:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.25);
+        }
+
+        .price-label {
+            font-size: 14px;
+            color: #6c757d;
+            margin: 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .boite-prix .prix {
+            font-size: 56px;
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .boite-prix .periode {
+            font-size: 20px;
+            opacity: 1;
+            font-weight: 600;
+            color: #6c757d;
+            margin: 0;
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+        }
+
+        .info-highlight {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            margin: 0;
+            text-align: center;
+        }
+
+        .info-highlight p {
+            font-size: 13px;
+            color: #667eea;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .boite-prix::before {
+            display: none;
+        }
+
+        /* ========== SECTION PROPRIETAIRE ========== */
+        .section-proprietaire {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            padding: 25px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .proprietaire-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .proprietaire-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            flex-shrink: 0;
+        }
+
+        .proprietaire-info {
+            flex: 1;
+        }
+
+        .proprietaire-nom {
+            font-size: 16px;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 4px;
+        }
+
+        .proprietaire-type {
+            color: #6c757d;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .proprietaire-badge {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .proprietaire-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .proprietaire-stat {
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .proprietaire-stat-value {
+            font-size: 16px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .proprietaire-stat-label {
+            font-size: 11px;
+            color: #6c757d;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .proprietaire-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .proprietaire-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+        .section-vibe {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 45px;
+            border-radius: 20px;
+            margin-top: 40px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .section-vibe:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.3);
+        }
+
+        .section-vibe h2 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .section-vibe p {
+            font-size: 48px;
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ========== ANNONCES SIMILAIRES ========== */
+        .section-similaire {
+            margin-top: 80px;
+            padding-top: 50px;
+            border-top: 3px solid #ecf0f1;
+        }
+
+        .section-similaire h2 {
+            color: #2c3e50;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-similaire h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #e74c3c, #e67e22);
+            border-radius: 2px;
+        }
+
+        .grille-similaire {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto; /* Scroll horizontal si trop d'annonces */
+        }
+
+        /* Carte d'une annonce similaire */
+        .carte-similaire {
+            flex: 0 0 calc(25% - 15px); /* 4 colonnes */
+            min-width: 250px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #3498db;
+        }
+
+        .carte-similaire:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-left-color: #e74c3c;
+        }
+
+        .carte-similaire .prix-carte {
+            color: #3498db;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .carte-similaire .periode-carte {
+            color: #3498db;
+            font-size: 14px;
+        }
+
+        .carte-similaire .description-carte {
+            color: #6c757d;
+            font-size: 14px;
+            margin: 12px 0;
+            min-height: auto;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .carte-similaire .date-carte {
+            color: #868e96;
+            font-size: 12px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .carte-similaire button {
+            width: 100%;
+            padding: 12px 15px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .carte-similaire button:hover {
+            background: linear-gradient(135deg, #2980b9 0%, #1a5276 100%);
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+        }
+
+        /* ========== PIED DE PAGE (FOOTER) ========== */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            margin-top: 60px;
+            border-top: none;
+        }
+
+        footer a {
+            color: #adb5bd;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0;
+        }
+
+        footer a:hover {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        /* ========== RESPONSIVE - TABLETTE (1024px et moins) ========== */
+        @media (max-width: 1024px) {
+            .carte-similaire {
+                flex: 0 0 calc(50% - 10px); /* 2 colonnes au lieu de 4 */
+            }
+        }
+
+        /* ========== RESPONSIVE - MOBILE (768px et moins) ========== */
+        @media (max-width: 768px) {
+            .diapositive-carrousel {
+                height: 300px; /* Carrousel plus petit sur mobile */
+            }
+
+            .bouton-precedent-carrousel,
+            .bouton-suivant-carrousel {
+                padding: 10px 15px;
+                font-size: 18px;
+            }
+
+            header {
+                flex-direction: column; /* Header en colonne */
+                gap: 15px;
+                padding: 15px;
+                text-align: center;
+            }
+
+            nav {
+                width: 100%;
+                justify-content: space-around;
+                font-size: 14px;
+            }
+
+            .conteneur {
+                padding: 0 15px;
+                margin: 20px auto;
+            }
+
+            .contenu-principal {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+
+            .bloc-info h2 {
+                font-size: 15px;
+            }
+
+            .boite-prix {
+                padding: 25px;
+            }
+
+            .boite-prix .prix {
+                font-size: 32px;
+            }
+
+            .boite-prix .periode {
+                font-size: 18px;
+            }
+
+            .grille-similaire {
+                flex-direction: column; /* Cartes en colonne */
+            }
+
+            .carte-similaire {
+                flex: 1 1 auto;
+                min-width: 100%;
+            }
+
+            .section-similaire h2 {
+                font-size: 18px;
+            }
+
+            footer {
+                padding: 15px;
+            }
+
+            footer a {
+                display: block;
+                margin: 8px 0;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
 <body>
+    <!-- ========== EN-TÊTE DU SITE ========== -->
     <header>
-        <img class="logo" src="media/pictures/the-smiling-anvils-housing-picture.png" alt="logo" width="200" height="200">
-        <h1>The Anvils Housing</h1>
-        <p>Trouvez votre logement étudiant facilement et cela avec des critères encore jamais vu dans les domaines de l'immobilier</p>
+        <!-- Ligne supérieure avec logo et navigation -->
+        <div class="header-top">
+            <div class="logo">
+                <img src="media/logo.png" alt="The Anvils Logo">
+                <span>The Anvils</span>
+                <span class="logo-sous-titre">Housing</span>
+            </div>
+            <!-- Navigation principale -->
+            <nav>
+                <button>Etudiant</button>
+                <button>Favoris</button>
+                <button>Conversations</button>
+            </nav>
+        </div>
+
+        <!-- Barre de recherche et filtres -->
+        <div class="barre-recherche-container">
+            <!-- Champ de recherche -->
+            <input type="text" class="champ-recherche" placeholder="Où cherchez-vous ?">
+
+            <!-- Filtres avec dropdowns -->
+            <div class="conteneur-filtres">
+                <!-- Dropdown Type de logement -->
+                <div class="dropdown">
+                    <button class="dropdown-bouton">Type de logement</button>
+                    <div class="dropdown-menu">
+                        <div>Studio</div>
+                        <div>T1</div>
+                        <div>T2</div>
+                        <div>T3</div>
+                        <div>T4+</div>
+                    </div>
+                </div>
+
+                <!-- Dropdown Pièces -->
+                <div class="dropdown">
+                    <button class="dropdown-bouton">Pièces</button>
+                    <div class="dropdown-menu">
+                        <div>1 pièce</div>
+                        <div>2 pièces</div>
+                        <div>3 pièces</div>
+                        <div>4 pièces</div>
+                        <div>5+ pièces</div>
+                    </div>
+                </div>
+
+                <!-- Dropdown Budget -->
+                <div class="dropdown">
+                    <button class="dropdown-bouton">Budget</button>
+                    <div class="dropdown-menu">
+                        <div>Moins de 300€</div>
+                        <div>300€ - 500€</div>
+                        <div>500€ - 700€</div>
+                        <div>700€ - 1000€</div>
+                        <div>Plus de 1000€</div>
+                    </div>
+                </div>
+
+                <!-- Dropdown Vibe de la location -->
+                <div class="dropdown">
+                    <button class="dropdown-bouton">Vibe de la location</button>
+                    <div class="dropdown-menu">
+                        <div>Calme et tranquille</div>
+                        <div>Animé et social</div>
+                        <div>Bien situé</div>
+                        <div>Nature</div>
+                        <div>Moderne</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bouton Rechercher -->
+            <button class="bouton-rechercher">Rechercher</button>
+        </div>
     </header>
 
-    <footer>
-        <a>Accueil</a>
-        <a>Dernières Annonces</a>
-        <a>Contact</a>
-    </footer>
-    
-    <nav>
-        <p> Pub</p> 
-    </nav>
+    <!-- ========== CONTENEUR PRINCIPAL ========== -->
+    <div class="conteneur">
+        <!-- ========== DISPOSITION À DEUX COLONNES ========== -->
+        <div class="disposition-principale">
+            <!-- COLONNE GAUCHE : Retour et Prix -->
+            <div class="colonne-gauche">
+                <div class="section-retour-prix">
+                    <!-- Lien de retour à l'accueil -->
+                    <a href="#" class="lien-retour">&lt; Retour à l'accueil</a>
 
-    <button class="bouton-partager"> Favoris</button>
+                    <!-- ========== PRIX EN ÉVIDENCE ========== -->
+                    <div class="boite-prix">
+                        <p class="price-label">À partir de</p>
+                        <div class="prix">600€<span class="periode">/mois</span></div>
+                        <button class="cta-button">Réserver maintenant</button>
+                        <div class="info-highlight">
+                            <p>✓ Éligible APL & ALS</p>
+                        </div>
+                    </div>
 
-    <div class="carrousel d'images">
-        <img class="maison1" src="media/pictures/the-smiling-anvils-housing-picture.png" alt="logo" width="200" height="200">
-        <img class="maison2" src="media/pictures/the-smiling-anvils-housing-picture.png" alt="logo" width="200" height="200">
-        <img class="maison3" src="media/pictures/the-smiling-anvils-housing-picture.png" alt="logo" width="200" height="200">
-        <img class="maison4" src="media/pictures/the-smiling-anvils-housing-picture.png" alt="logo" width="200" height="200">
-        <img class="maison5" src="media/pictures/the-smiling-anvils-housing-picture.png" alt="logo" width="200" height="200">
+                    <!-- ========== SECTION PROPRIETAIRE ========== -->
+                    <div class="section-proprietaire">
+                        <div class="proprietaire-header">
+                            <div class="proprietaire-avatar">M</div>
+                            <div class="proprietaire-info">
+                                <div class="proprietaire-nom">Misenloc</div>
+                                <div class="proprietaire-type">
+                                    Propriétaire Pro
+                                    <span class="proprietaire-badge">✓ Vérifié</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="proprietaire-stats">
+                            <div class="proprietaire-stat">
+                                <div class="proprietaire-stat-value">4.5★</div>
+                                <div class="proprietaire-stat-label">Note</div>
+                            </div>
+                            <div class="proprietaire-stat">
+                                <div class="proprietaire-stat-value">33%</div>
+                                <div class="proprietaire-stat-label">Réponse</div>
+                            </div>
+                        </div>
+
+                        <div class="proprietaire-about">
+                            Misenloc est une équipe de professionnels expérimentés dans la gestion de propriétés étudiantes depuis plus de 10 ans. Nous mettons un point d'honneur à offrir des logements de qualité dans une ambiance chaleureuse et conviviale. Vos questions sont nos priorités !
+                        </div>
+
+                        <button class="proprietaire-btn">Contacter</button>
+                    </div>
+
+                    <!-- ========== SECTION CARTE DE LOCALISATION ========== -->
+                    <div class="section-carte">
+                        <div class="titre-carte">📍 Localisation</div>
+                        <div class="carte-conteneur">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2487.533037665722!2d-1.573551340739137!3d43.44404578364922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5114f1ff26366d%3A0x9376b5c69733ef3!2s474%20Rue%20Harguin%20Etcheberry%2C%2064210%20Bidart!5e0!3m2!1ses!2sfr!4v1766792368150!5m2!1ses!2sfr" class="carte-iframe" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLONNE DROITE : Carrousel et Descriptions -->
+            <div class="colonne-droite">
+                <!-- Carrousel d'images du logement (CSS pur, sans JavaScript) -->
+                <div class="conteneur-carrousel">
+                    <!-- Radio buttons cachés pour contrôler les diapositives -->
+                    <input type="radio" id="diapositive1" name="carrousel" class="commande-carrousel" checked>
+                    <input type="radio" id="diapositive2" name="carrousel" class="commande-carrousel">
+                    <input type="radio" id="diapositive3" name="carrousel" class="commande-carrousel">
+                    <input type="radio" id="diapositive4" name="carrousel" class="commande-carrousel">
+
+                    <!-- Conteneur des images -->
+                    <div class="diapositives-carrousel">
+                        <!-- Image 1 -->
+                        <div class="diapositive-carrousel">
+                            <img src="media/pictures/colocationESTIA.avif" alt="Photo du logement 1">
+                        </div>
+                        <!-- Image 2 -->
+                        <div class="diapositive-carrousel">
+                            <img src="media/pictures/colocationESTIA.avif" alt="Photo du logement 2">
+                        </div>
+                        <!-- Image 3 -->
+                        <div class="diapositive-carrousel">
+                            <img src="media/pictures/colocationESTIA.avif" alt="Photo du logement 3">
+                        </div>
+                        <!-- Image 4 -->
+                        <div class="diapositive-carrousel">
+                            <img src="media/pictures/colocationESTIA.avif" alt="Photo du logement 4">
+                        </div>
+                    </div>
+
+                    <!-- Boutons de navigation circulaires -->
+                    <!-- Boutons précédent -->
+                    <label for="diapositive4" class="bouton-carrousel bouton-precedent" data-prev="4">◀</label>
+                    <label for="diapositive1" class="bouton-carrousel bouton-precedent" data-prev="1">◀</label>
+                    <label for="diapositive2" class="bouton-carrousel bouton-precedent" data-prev="2">◀</label>
+                    <label for="diapositive3" class="bouton-carrousel bouton-precedent" data-prev="3">◀</label>
+
+                    <!-- Boutons suivant -->
+                    <label for="diapositive2" class="bouton-carrousel bouton-suivant" data-next="2">▶</label>
+                    <label for="diapositive3" class="bouton-carrousel bouton-suivant" data-next="3">▶</label>
+                    <label for="diapositive4" class="bouton-carrousel bouton-suivant" data-next="4">▶</label>
+                    <label for="diapositive1" class="bouton-carrousel bouton-suivant" data-next="1">▶</label>
+
+                    <!-- Points de navigation du carrousel -->
+                    <div class="points-carrousel">
+                        <button class="point-carrousel" onclick="document.getElementById('diapositive1').checked = true"></button>
+                        <button class="point-carrousel" onclick="document.getElementById('diapositive2').checked = true"></button>
+                        <button class="point-carrousel" onclick="document.getElementById('diapositive3').checked = true"></button>
+                        <button class="point-carrousel" onclick="document.getElementById('diapositive4').checked = true"></button>
+                    </div>
+                </div>
+
+                <!-- ========== DESCRIPTIONS SOUS LE CARROUSEL ========== -->
+                <div class="contenu-principal">
+                    <!-- Titre et localisation -->
+                    <div class="title-section">
+                        <h1>Superbe Colocation Étudiante en Centre-Ville</h1>
+                        <p class="location">📍 13 Rue Lorlt, 64210 Guéthary, France</p>
+                    </div>
+
+                    <!-- Badges -->
+                    <div class="badges">
+                        <span class="badge">✨ Coup de cœur</span>
+                        <span class="badge">🏠 Meublé</span>
+                        <span class="badge">📶 Fibre 1Gb/s</span>
+                        <span class="badge">🧺 Équipée</span>
+                        <span class="badge">🚇 Métro 2min</span>
+                    </div>
+
+                    <!-- Section Description générale -->
+                    <div class="description-section">
+                        <h2>📝 Description</h2>
+                        <p>Bienvenue dans cette magnifique colocation située en plein cœur ! Notre échoppe entièrement rénovée allie charme ancien et confort moderne pour vous offrir un cadre de vie exceptionnel.</p>
+                        <p>Proche du centre-ville et de l'université, vous profiterez d'un emplacement idéal dans un quartier dynamique avec tous commerces à proximité. Parfait pour les étudiants et jeunes actifs !</p>
+                    </div>
+
+                    <!-- Section Caractéristiques -->
+                    <div class="description-section">
+                        <h2>✨ Caractéristiques</h2>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon">🏠</div>
+                                <span>200 m² sur 4 niveaux</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🛏️</div>
+                                <span>8 chambres privées</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🚿</div>
+                                <span>2 salles de bains</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">👨‍🍳</div>
+                                <span>Cuisine tout équipée</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🪴</div>
+                                <span>Petit patio privé</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🧹</div>
+                                <span>Ménage hebdomadaire</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section Équipements & Services -->
+                    <div class="description-section">
+                        <h2>🎯 Équipements & Services</h2>
+                        <p><strong>Dans la cuisine :</strong> Four, plaques vitrocéramiques, micro-ondes, lave-vaisselle, grand réfrigérateur-congélateur, ustensiles complets</p>
+                        <p><strong>Espaces communs :</strong> Salon avec canapé et télé 55", grande table à manger 10 places, buanderie avec lave-linge et sèche-linge</p>
+                        <p><strong>Services inclus :</strong> Wifi Fibre ultra-rapide, Netflix, ménage hebdomadaire des parties communes, toutes charges incluses (eau, gaz, électricité)</p>
+                    </div>
+
+                    <!-- Section Localisation & Transports -->
+                    <div class="description-section">
+                        <h2>📍 Localisation & Transports</h2>
+                        <p>🚊 Tramway A : 2 minutes à pied (arrêt Palais de Justice)</p>
+                        <p>🚌 Bus lignes 1, 5, 15 : arrêt devant la résidence</p>
+                        <p>🚂 Gare Saint-Jean : 15 minutes en bus direct</p>
+                        <p>🏛️ Centre-ville & Place de l'Hôtel de Ville : 5 minutes à pied</p>
+                        <p>🛒 Supermarché Carrefour City : 3 minutes</p>
+                    </div>
+
+                    <!-- Section Modalités & Documents -->
+                    <div class="description-section">
+                        <h2>📋 Modalités & Documents</h2>
+                        <p><strong>Durée minimum :</strong> 6 mois</p>
+                        <p><strong>Dépôt de garantie :</strong> 1 mois de loyer</p>
+                        <p><strong>Documents requis :</strong> Pièce d'identité, certificat de scolarité ou contrat de travail, RIB, justificatif de garant (revenus x3 le loyer)</p>
+                        <p><strong>Disponibilité :</strong> Immédiate</p>
+                    </div>
+
+                    <!-- Section Vibe et notation -->
+                    <div class="section-vibe">
+                        <h2>Vibe et notation du logement</h2>
+                        <p>⭐⭐⭐⭐⭐</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== ANNONCES SIMILAIRES ========== -->
+        <div class="section-similaire">
+            <h2>Annonces similaires :</h2>
+            <div class="grille-similaire">
+                <!-- Annonce 1 -->
+                <div class="carte-similaire">
+                    <img src="media/pictures/colocationESTIA.avif" alt="Logement similaire 1" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+                    <div class="prix-carte">500€ <span class="periode-carte">/mois</span></div>
+                    <div class="description-carte">Studio cosy avec balcon - Quartier Chartrons</div>
+                    <div class="date-carte">📅 Disponible 01/01/2026</div>
+                    <button>Découvrir</button>
+                </div>
+                <!-- Annonce 2 -->
+                <div class="carte-similaire">
+                    <img src="media/pictures/colocationESTIA.avif" alt="Logement similaire 2" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+                    <div class="prix-carte">550€ <span class="periode-carte">/mois</span></div>
+                    <div class="description-carte">Coloc moderne 6 pers - Hyper-centre</div>
+                    <div class="date-carte">📅 Disponible 01/02/2026</div>
+                    <button>Découvrir</button>
+                </div>
+                <!-- Annonce 3 -->
+                <div class="carte-similaire">
+                    <img src="media/pictures/colocationESTIA.avif" alt="Logement similaire 3" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+                    <div class="prix-carte">480€ <span class="periode-carte">/mois</span></div>
+                    <div class="description-carte">T2 rénové - Proche université</div>
+                    <div class="date-carte">📅 Disponible 15/01/2026</div>
+                    <button>Découvrir</button>
+                </div>
+                <!-- Annonce 4 -->
+                <div class="carte-similaire">
+                    <img src="media/pictures/colocationESTIA.avif" alt="Logement similaire 4" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+                    <div class="prix-carte">600€ <span class="periode-carte">/mois</span></div>
+                    <div class="description-carte">Grande colocation avec jardin</div>
+                    <div class="date-carte">📅 Disponible 20/01/2026</div>
+                    <button>Découvrir</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <button class="bouton-partager"> Partager</button>
-
-    <main>
-        <h1 class="nom-residence">Nom de la Résidence</h1>
-
-        <section class="contenu-annonce">
-
-    
+    <!-- ========== PIED DE PAGE ========== -->
+    <footer>
+        <a href="#">ESTIA Allianz - la garantie Anvils Housing</a>
+        <a href="#">Allianz - L'assurance Habitation et la garantie Anvils Housing</a>
+        <a href="#">Mentions légales</a>
+        <a href="#">Aide</a>
+        <a href="#">CGU</a>
+    </footer>
 </body>
 </html>
