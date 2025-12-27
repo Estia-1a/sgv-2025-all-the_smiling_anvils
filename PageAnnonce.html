@@ -13,7 +13,7 @@
         <!-- Ligne supérieure avec logo et navigation -->
         <div class="header-top">
             <div class="logo">
-                <img src="media/logo.png" alt="The Anvils Logo">
+                <img src="media/pictures/the-smiling-anvils-housing-picture.png" alt="The Anvils Logo">
                 <span>The Anvils</span>
                 <span class="logo-sous-titre">Housing</span>
             </div>
@@ -37,10 +37,10 @@
                     <button class="dropdown-bouton">Type de logement</button>
                     <div class="dropdown-menu">
                         <div>Studio</div>
-                        <div>T1</div>
-                        <div>T2</div>
-                        <div>T3</div>
-                        <div>T4+</div>
+                        <div>Logement entier</div>
+                        <div>Colocation</div>
+                        <div>Coliving</div>
+                        <div>Studio</div>
                     </div>
                 </div>
 
@@ -156,29 +156,34 @@
                     <input type="radio" id="diapositive2" name="carrousel" class="commande-carrousel">
                     <input type="radio" id="diapositive3" name="carrousel" class="commande-carrousel">
                     <input type="radio" id="diapositive4" name="carrousel" class="commande-carrousel">
+                    <input type="radio" id="diapositive5" name="carrousel" class="commande-carrousel">
 
                     <!-- Conteneur des images -->
                     <div class="diapositives-carrousel">
                         <!-- Image 1 -->
                         <div class="diapositive-carrousel">
-                            <img src="media/pictures/colocationESTIA.avif" alt="Photo du logement 1">
+                            <img src="media/pictures/maison1.jpg" alt="Photo du logement 1">
                         </div>
                         <!-- Image 2 -->
                         <div class="diapositive-carrousel">
-                            <img src="media/pictures/colocationESTIA.avif" alt="Photo du logement 2">
+                            <img src="media/pictures/maison2.webp" alt="Photo du logement 2">
                         </div>
                         <!-- Image 3 -->
                         <div class="diapositive-carrousel">
-                            <img src="media/pictures/colocationESTIA.avif" alt="Photo du logement 3">
+                            <img src="media/pictures/maison3.webp" alt="Photo du logement 3">
                         </div>
                         <!-- Image 4 -->
                         <div class="diapositive-carrousel">
-                            <img src="media/pictures/colocationESTIA.avif" alt="Photo du logement 4">
+                            <img src="media/pictures/maison4.jpg" alt="Photo du logement 4">
+                        </div>
+                        <div class="diapositive-carrousel">
+                            <img src="media/pictures/maison5.jpg" alt="Photo du logement 5">
                         </div>
                     </div>
 
                     <!-- Boutons de navigation circulaires -->
                     <!-- Boutons précédent -->
+                    <label for="diapositive5" class="bouton-carrousel bouton-precedent" data-prev="5">◀</label>
                     <label for="diapositive4" class="bouton-carrousel bouton-precedent" data-prev="4">◀</label>
                     <label for="diapositive1" class="bouton-carrousel bouton-precedent" data-prev="1">◀</label>
                     <label for="diapositive2" class="bouton-carrousel bouton-precedent" data-prev="2">◀</label>
@@ -188,23 +193,16 @@
                     <label for="diapositive2" class="bouton-carrousel bouton-suivant" data-next="2">▶</label>
                     <label for="diapositive3" class="bouton-carrousel bouton-suivant" data-next="3">▶</label>
                     <label for="diapositive4" class="bouton-carrousel bouton-suivant" data-next="4">▶</label>
+                    <label for="diapositive5" class="bouton-carrousel bouton-suivant" data-next="5">▶</label>
                     <label for="diapositive1" class="bouton-carrousel bouton-suivant" data-next="1">▶</label>
-
-                    <!-- Points de navigation du carrousel -->
-                    <div class="points-carrousel">
-                        <button class="point-carrousel" onclick="document.getElementById('diapositive1').checked = true"></button>
-                        <button class="point-carrousel" onclick="document.getElementById('diapositive2').checked = true"></button>
-                        <button class="point-carrousel" onclick="document.getElementById('diapositive3').checked = true"></button>
-                        <button class="point-carrousel" onclick="document.getElementById('diapositive4').checked = true"></button>
-                    </div>
                 </div>
 
                 <!-- ========== DESCRIPTIONS SOUS LE CARROUSEL ========== -->
                 <div class="contenu-principal">
                     <!-- Titre et localisation -->
                     <div class="title-section">
-                        <h1>Superbe Colocation Étudiante en Centre-Ville</h1>
-                        <p class="location">📍 13 Rue Lorlt, 64210 Guéthary, France</p>
+                        <h1>Belle Colocation Étudiante à Bidart</h1>
+                        <p class="location">📍 474 Rue Harguin Etcheberry, 64210 Bidart, France</p>
                     </div>
 
                     <!-- Badges -->
@@ -219,8 +217,8 @@
                     <!-- Section Description générale -->
                     <div class="description-section">
                         <h2>📝 Description</h2>
-                        <p>Bienvenue dans cette magnifique colocation située en plein cœur ! Notre échoppe entièrement rénovée allie charme ancien et confort moderne pour vous offrir un cadre de vie exceptionnel.</p>
-                        <p>Proche du centre-ville et de l'université, vous profiterez d'un emplacement idéal dans un quartier dynamique avec tous commerces à proximité. Parfait pour les étudiants et jeunes actifs !</p>
+                        <p>Bienvenue dans cette accueillante colocation située à Bidart, une belle commune côtière du Pays Basque ! Votre logement combine confort moderne et ambiance conviviale pour un cadre de vie idéal.</p>
+                        <p>Située à proximité des plages et de la nature basque, vous profiterez d'un environnement calme et agréable. Un lieu parfait pour les étudiants et jeunes actifs cherchant l'équilibre entre la sérénité et l'accès aux commodités !</p>
                     </div>
 
                     <!-- Section Caractéristiques -->
@@ -265,11 +263,11 @@
                     <!-- Section Localisation & Transports -->
                     <div class="description-section">
                         <h2>📍 Localisation & Transports</h2>
-                        <p>🚊 Tramway A : 2 minutes à pied (arrêt Palais de Justice)</p>
-                        <p>🚌 Bus lignes 1, 5, 15 : arrêt devant la résidence</p>
-                        <p>🚂 Gare Saint-Jean : 15 minutes en bus direct</p>
-                        <p>🏛️ Centre-ville & Place de l'Hôtel de Ville : 5 minutes à pied</p>
-                        <p>🛒 Supermarché Carrefour City : 3 minutes</p>
+                        <p>🚌 Bus : Réseau de transport local pour accéder à Bayonne et Biarritz</p>
+                        <p>🏖️ Plages : 15 minutes à pied (Bidart possède plusieurs plages superbes)</p>
+                        <p>🚂 Gare de Bayonne : 25 minutes en voiture pour l'accès TER/SNCF</p>
+                        <p>🏛️ Centre de Bidart : 10 minutes à pied (commerces, restaurants)</p>
+                        <p>🛒 Supermarché Carrefour City : 5 minutes en voiture</p>
                     </div>
 
                     <!-- Section Modalités & Documents -->
