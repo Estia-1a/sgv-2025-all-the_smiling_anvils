@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="the-smiling-anvils.css">
+    <link rel="stylesheet" href="modifs-Css.css">
+    <link rel="PageAnnonce" href="PageAnnonce.html">
     <title>The Anvils Housing Website</title>
 </head>
 
@@ -27,7 +28,7 @@
             <div class="dropdown">
                 <button class="dropdown-toggle1">Type de logement ▼</button>
                 <div class="dropdown-menu1">
-                    <h3>Type de logement</h3>
+                <!--    <h3>Type de logement</h3>
                     <label><input type="checkbox"> Appartement</label>
                     <label><input type="checkbox"> Maison</label>
                     <label><input type="checkbox"> Studio</label>
@@ -39,12 +40,12 @@
                     <div class="actions">
                         <button class="clear">Effacer</button>
                         <button class="apply">Appliquer</button>
-                    </div>
+                    </div>-->
                 </div>
 
                 <button class="dropdown-toggle2">Pièces ▼</button>
                 <div class="dropdown-menu2">
-                    <h3>Pièces</h3>
+                <!--    <h3>Pièces</h3>
                     <label><input type="checkbox"> T1</label>
                     <label><input type="checkbox"> T2</label>
                     <label><input type="checkbox"> T3</label>
@@ -57,12 +58,12 @@
                     <div class="actions">
                         <button class="clear">Effacer</button>
                         <button class="apply">Appliquer</button>
-                    </div>
+                    </div>-->
                 </div>
 
                 <button class="dropdown-toggle3">Budget ▼</button>
                 <div class="dropdown-menu3">
-                    <h3>Budget</h3>
+                <!--    <h3>Budget</h3>
                     <label><input type="checkbox"> Gratuit (MDR)</label>
                     <label><input type="checkbox"> 1 à 500</label>
                     <label><input type="checkbox"> 500 à 1000</label>
@@ -71,12 +72,12 @@
                     <div class="actions">
                         <button class="clear">Effacer</button>
                         <button class="apply">Appliquer</button>
-                    </div>
+                    </div>-->
                 </div>
 
                 <button class="dropdown-toggle4">Vibe de la colocation ▼</button>
                 <div class="dropdown-menu4">
-                    <h3>Vibe de la colocation</h3>
+                <!--    <h3>Vibe de la colocation</h3>
                     <label><input type="checkbox"> LGBTQAI+</label>
                     <label><input type="checkbox"> avec homme</label>
                     <label><input type="checkbox"> avec femme</label>
@@ -88,7 +89,7 @@
                     <div class="actions">
                         <button class="clear">Effacer</button>
                         <button class="apply">Appliquer</button>
-                    </div>
+                    </div>-->
                 </div>
 
                 <button>Rechercher</button>
@@ -96,42 +97,42 @@
             </div>
         </div>    
         <footer>
-            <a>Accueil</a>
-            <a>Dernières Annonces</a>
-            <a>Contact</a>
+            <a href="">Accueil</a>
+            <a href="PageAnnonce.html">Dernières Annonces</a>
+            <a href="">Contact</a>
         </footer>
     </header>
 
     <section class="containers">
         <nav>
             <h1>Publicité: Armée de l'Air</h1>
-            <img class="Photo_Pub1" src="" alt="Photo_Pub1" width="150" height="200">
-            <p>Bonjour, vous rêvez de devenir aviateur, ne vous inquiétez pas, sauf si vous avez dépasser les 40 ans ou que vous avez une mauvaise santé c'est déjà mort pour vous, désolé. En tout cas rejoignez nous c'est bien ! Engagezvous sur le site : Engagez vous.fr</p>
+            <img class="Photo_Pub1" src="pictures/Rafale.jpg" alt="Photo_Pub1" width="320" height="200">
+            <p>Bonjour, vous rêvez de devenir aviateur, ne vous inquiétez pas, sauf si vous avez dépasser les 40 ans ou que vous avez une mauvaise santé c'est déjà mort pour vous, désolé. En tout cas rejoignez nous, c'est cool! Engagez vous sur notre site: Engagez vous.fr</p>
             <h1>Publicité: Nouvelle Voiture</h1>
-            <img class="Photo_Pub2" src="" alt="Photo_Pub2" width="150" height="200">
-            <p></p>
+            <img class="Photo_Pub2" src="pictures/mclarenp1.jpg" alt="Photo_Pub2" width="320" height="230">
+            <p>Pourquoi se contenter d'une voiture familiale tandis qu'on peut avoir une hypercar anglaise? Achetez dès maintenant la Mclaren P1 GTR Road legal. Vous en avez besoin!</p>
         </nav>
 
         <section class="liste_des_annonces"> <!-- Ceci permet de gérer la partie css en créant une partie " .liste_des_annonces" -->
         
             <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
-                <img src="pictures/colocationESTIA.avif" alt="studio">
-                <h3>Appartement pour une colocation entre étudiants ESTIA aimant faire la fête, faire des rencontres et qui aiment la mécanique</h3> <!-- Type d'appartement -->
+                <img src="pictures/dirthouse.jpg" alt="studio">
+                <h3>Appartement / location étudiante ESTIA aimant faire la fête, faire des rencontres et qui aiment la mécanique</h3> <!-- Type d'appartement -->
                 <p>A partir de 500€/mois</p> <!-- Prix en euro/mois -->
                 <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
                 <p>50m² - 4 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
-                <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
+                <button rel="PageAnnonce">Voir l'annonce</button> <!-- bouton vers l'annonce -->
                 <footer>
                     <p1>Disponibile à partir du 39 jan. 2077 </p1>
                 </footer>          
             </div>
 
             <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
-                <img src="pictures/studioESTIA.jpg" alt="studio">
+                <img src="pictures/hutte.jpg" alt="studio">
                 <h3>Studio pour étudiants ESTIA aimant la tranquilité, la lecture et les apéros</h3> <!-- Type d'appartement -->
                 <p>A partir de 600€/mois</p> <!-- Prix en euro/mois -->
                 <p>Localisation : ... 64210, Bidart</p>
-                <p>20m² - 1 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
+                <p>800m² - 1 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
                 <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
                 <footer>
                     <p1>Disponibile à partir du 64 fév. 2192 </p1>
@@ -151,7 +152,7 @@
             </div>
 
             <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
-                <img src="pictures/colocationESTIA.avif" alt="studio">
+                <img src="pictures/thelastofus_photo.jpg" alt="studio">
                 <h3> ... </h3> <!-- Type d'appartement -->
                 <p>A partir de 500€/mois</p> <!-- Prix en euro/mois -->
                 <p>Localisation : ... 64210, Bidart</p>
@@ -163,7 +164,7 @@
             </div>
 
             <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
-                <img src="pictures/studioESTIA.jpg" alt="studio">
+                <img src="pictures/AdventureTime.jpg" alt="studio">
                 <h3>Studio pour étudiants ESTIA aimant la tranquilité, la lecture et les apéros</h3> <!-- Type d'appartement -->
                 <p>A partir de 600€/mois</p> <!-- Prix en euro/mois -->
                 <p>Localisation : ... 64210, Bidart</p>
@@ -175,7 +176,7 @@
             </div>
 
             <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
-                <img src="pictures/colocationESTIA.avif" alt="studio">
+                <img src="pictures/image-4-e28093-buildings-overgrown-with-lush-foliage.jpg" alt="studio">
                 <h3>Studio pour une colocation entre étudiants ESTIA aimant le sport, </h3> <!-- Type d'appartement -->
                 <p>A partir de 450€/mois</p> <!-- Prix en euro/mois -->
                 <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
@@ -189,21 +190,14 @@
     </section>
     
     <footer class="finalpart">
-        <h1>Communications :</h1>
-        <a href="lien.html">lien hypertexte</a>
-        
-        <a href="lien.html">lien hypertexte</a>
-
-        <a href="lien.html">lien hypertexte</a>
-
-        <a href="lien.html">lien hypertexte</a>
-
-        <a href="lien.html">lien hypertexte</a>
-
-        <a href="lien.html">lien hypertexte</a>
+        <a href="lien.html">ESTIA</a>        
+        <a href="lien.html">Allianz - la garantie Anvils Housing</a>
+        <a href="lien.html">Allianz - L'assurance Habitaion et la garantie Anvils Housing</a>
+        <a href="lien.html">Mentions légales</a>
+        <a href="lien.html">Aide</a>
+        <a href="lien.html">CGU</a>
 
     </footer>
 
 </body>
 </html>
-
