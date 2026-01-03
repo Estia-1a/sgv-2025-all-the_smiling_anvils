@@ -1,0 +1,1255 @@
+/* ================================================================
+   STYLES GÉNÉRAUX - The Anvils Housing
+   Page d'Annonce - Design Moderne et Épuré
+   ================================================================ */
+
+/* ========== RÉINITIALISATION GLOBALE ========== */
+/* Supprime les marges et padding par défaut de tous les éléments */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Inclut les bordures et padding dans la largeur/hauteur */
+}
+
+/* ========== STYLES DU CORPS DE PAGE ========== */
+/* Définit les styles globaux : police, arrière-plan, couleur du texte */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #212529;
+    line-height: 1.6;
+    padding-top: 180px; /* Espace pour le header fixe */
+}
+
+/* ================================================================
+   EN-TÊTE DU SITE (HEADER)
+   Conteneur fixe avec logo, barre de recherche et filtres
+   ================================================================ */
+
+header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); /* Effet de flou derrière le header */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+    position: fixed; /* Reste fixe au sommet pendant le scroll */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Reste au-dessus de tous les éléments */
+    width: 100%;
+}
+
+/* ========== LIGNE SUPÉRIEURE DU HEADER ========== */
+/* Contient le logo et la navigation principale */
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ========== LOGO ========== */
+/* Logo de The Anvils avec dégradé de couleur */
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Image du logo personnalisée */
+.logo img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+/* Désactiv le pseudo-élément ::before si présent */
+.logo::before {
+    display: none;
+}
+
+/* Sous-titre du logo "Housing" */
+.logo-sous-titre {
+    font-size: 14px;
+    font-weight: 600;
+    color: #6c757d;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-left: 0;
+}
+
+/* ========== BARRE DE RECHERCHE ========== */
+/* Conteneur pour la barre de recherche et les filtres */
+.barre-recherche-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+    border-radius: 8px;
+}
+
+/* Champ de saisie pour la recherche */
+.champ-recherche {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    color: #333;
+}
+
+/* Placeholder du champ de recherche */
+.champ-recherche::placeholder {
+    color: #999;
+}
+
+/* Focus du champ de recherche avec ombre */
+.champ-recherche:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+/* ========== FILTRES DROPDOWN ========== */
+/* Conteneur pour tous les dropdowns */
+.conteneur-filtres {
+    display: flex;
+    gap: 15px;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+/* Élément dropdown individuel */
+.dropdown {
+    position: relative;
+    background-color: white;
+    border-radius: 4px;
+    overflow: visible; /* Permet au menu de s'afficher au-dessus */
+}
+
+/* Bouton du dropdown */
+.dropdown-bouton {
+    background-color: white;
+    color: #333;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 150px;
+    transition: background-color 0.3s ease;
+}
+
+/* Effet hover sur le bouton */
+.dropdown-bouton:hover {
+    background-color: #f0f0f0;
+}
+
+/* Flèche du dropdown */
+.dropdown-bouton::after {
+    content: "▼";
+    font-size: 10px;
+    color: #666;
+}
+
+/* Menu dropdown (masqué par défaut) */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 100;
+    margin-top: 5px;
+}
+
+/* Afficher le menu au hover du dropdown */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Éléments du menu dropdown */
+.dropdown-menu option-item,
+.dropdown-menu div {
+    padding: 12px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+/* Dernier élément sans bordure inférieure */
+.dropdown-menu option-item:last-child,
+.dropdown-menu div:last-child {
+    border-bottom: none;
+}
+
+/* Hover sur les éléments du menu */
+.dropdown-menu option-item:hover,
+.dropdown-menu div:hover {
+    background-color: #f9f9f9;
+}
+
+/* ========== BOUTON RECHERCHER ========== */
+/* Bouton principal de recherche */
+.bouton-rechercher {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    align-self: center;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Effet hover avec animation */
+.bouton-rechercher:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+/* Effet click */
+.bouton-rechercher:active {
+    transform: translateY(0);
+}
+
+/* ========== NAVIGATION PRINCIPALE ========== */
+/* Barre de navigation avec boutons */
+nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Boutons de navigation */
+nav button {
+    background: none;
+    border: none;
+    color: #495057;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+/* Hover sur les boutons de navigation */
+nav button:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ================================================================
+   CONTENEUR ET DISPOSITION PRINCIPALE
+   Gestion du layout à deux colonnes
+   ================================================================ */
+
+/* Conteneur principal */
+.conteneur {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 30px;
+}
+
+/* Lien de retour à l'accueil */
+.lien-retour {
+    color: rgba(102, 126, 234, 0.5);
+    text-decoration: none;
+    margin-bottom: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+/* Hover sur le lien de retour */
+.lien-retour:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(-5px);
+}
+
+/* ========== DISPOSITION PRINCIPALE À 2 COLONNES ========== */
+/* Layout utilisant float pour la colonne gauche et BFC pour la droite */
+.disposition-principale {
+    display: block;
+    width: 100%;
+}
+
+/* Colonne gauche (sidebar avec prix et propriétaire) */
+.colonne-gauche {
+    float: left;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-right: 30px;
+}
+
+/* Colonne droite (carrousel et descriptions) */
+.colonne-droite {
+    overflow: hidden; /* Crée un Block Formatting Context */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Section groupant retour et prix */
+.section-retour-prix {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ================================================================
+   CARROUSEL D'IMAGES (CSS PUR - SANS JAVASCRIPT)
+   Galerie d'images avec navigation CSS
+   ================================================================ */
+
+/* Conteneur du carrousel */
+.conteneur-carrousel {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #000;
+    aspect-ratio: 16 / 10;
+    min-height: 400px;
+}
+
+/* Radio buttons cachés (pour contrôler les diapositives) */
+.commande-carrousel {
+    display: none;
+}
+
+/* Conteneur des diapositives */
+.diapositives-carrousel {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+/* Chaque diapositive */
+.diapositive-carrousel {
+    min-width: 100%;
+    height: 500px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: absolute;
+}
+
+/* Image dans la diapositive */
+.diapositive-carrousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Afficher la diapositive sélectionnée */
+#diapositive1:checked ~ .diapositives-carrousel .diapositive-carrousel:nth-child(1),
+#diapositive2:checked ~ .diapositives-carrousel .diapositive-carrousel:nth-child(2),
+#diapositive3:checked ~ .diapositives-carrousel .diapositive-carrousel:nth-child(3),
+#diapositive4:checked ~ .diapositives-carrousel .diapositive-carrousel:nth-child(4),
+#diapositive5:checked ~ .diapositives-carrousel .diapositive-carrousel:nth-child(5) {
+    opacity: 1;
+    z-index: 5;
+    position: relative;
+}
+
+/* ========== BOUTONS DE NAVIGATION DU CARROUSEL ========== */
+/* Boutons précédent et suivant */
+.bouton-carrousel {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+    display: none;
+}
+
+/* Hover sur les boutons */
+.bouton-carrousel:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Positionnement du bouton précédent */
+.bouton-precedent {
+    left: 10px;
+}
+
+/* Positionnement du bouton suivant */
+.bouton-suivant {
+    right: 10px;
+}
+
+/* Montrer/masquer les boutons selon la diapositive */
+#diapositive1:checked ~ .bouton-precedent[data-prev="5"],
+#diapositive1:checked ~ .bouton-suivant[data-next="2"],
+#diapositive2:checked ~ .bouton-precedent[data-prev="1"],
+#diapositive2:checked ~ .bouton-suivant[data-next="3"],
+#diapositive3:checked ~ .bouton-precedent[data-prev="2"],
+#diapositive3:checked ~ .bouton-suivant[data-next="4"],
+#diapositive4:checked ~ .bouton-precedent[data-prev="3"],
+#diapositive4:checked ~ .bouton-suivant[data-next="5"],
+#diapositive5:checked ~ .bouton-precedent[data-prev="4"],
+#diapositive5:checked ~ .bouton-suivant[data-next="1"] {
+    display: block;
+}
+
+/* ================================================================
+   CONTENU PRINCIPAL
+   Section avec descriptions, caractéristiques et services
+   ================================================================ */
+
+/* Conteneur principal du contenu */
+.contenu-principal {
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 100%;
+    clear: both;
+}
+
+/* Titre principal (h1) */
+h1 {
+    color: #212529;
+    margin-bottom: 15px;
+    font-size: 32px;
+    font-weight: 800;
+    position: relative;
+    padding-bottom: 0;
+    width: 100%;
+}
+
+h1::after {
+    display: none;
+}
+
+/* Section avec titre et localisation */
+.title-section {
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 3px solid #f8f9fa;
+}
+
+.title-section h1 {
+    margin-bottom: 15px;
+}
+
+/* Texte de localisation */
+.location {
+    color: #6c757d;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* ========== BADGES (ÉTIQUETTES) ========== */
+/* Conteneur des badges */
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+/* Badge individuel */
+.badge {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s;
+}
+
+/* Hover sur les badges */
+.badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+/* ========== SECTIONS DE DESCRIPTION ========== */
+/* Section générale de description */
+.description-section {
+    margin: 30px 0;
+}
+
+/* Titre des sections de description */
+.description-section h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 20px;
+}
+
+/* Ligne colorée avant le titre */
+.description-section h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 3px;
+}
+
+/* Paragraphes dans les sections */
+.description-section p {
+    color: #495057;
+    line-height: 1.8;
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+/* ========== GRILLE DE CARACTÉRISTIQUES ========== */
+/* Grille pour afficher les caractéristiques */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 25px 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    padding: 25px;
+    border-radius: 16px;
+}
+
+/* Élément de caractéristique */
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Icône de caractéristique */
+.feature-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    flex-shrink: 0;
+}
+
+/* ========== BLOCS D'INFORMATION ========== */
+/* Bloc d'information générique */
+.bloc-info {
+    margin-bottom: 25px;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+    border-left: none;
+    transition: none;
+}
+
+.bloc-info:hover {
+    background-color: transparent;
+    box-shadow: none;
+    transform: none;
+}
+
+.bloc-info:last-child {
+    margin-bottom: 0;
+}
+
+.bloc-info h2 {
+    color: #212529;
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.bloc-info p {
+    color: #495057;
+    line-height: 1.8;
+    font-size: 15px;
+    margin: 0;
+}
+
+/* ================================================================
+   SECTION PROPRIÉTAIRE
+   Affichage des informations du propriétaire/gestionnaire
+   ================================================================ */
+
+.section-proprietaire {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    padding: 25px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* En-tête du propriétaire (avatar + info) */
+.proprietaire-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Avatar du propriétaire */
+.proprietaire-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    flex-shrink: 0;
+}
+
+/* Conteneur pour les informations du propriétaire */
+.proprietaire-info {
+    flex: 1;
+}
+
+/* Nom du propriétaire */
+.proprietaire-nom {
+    font-size: 16px;
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 4px;
+}
+
+/* Type de propriétaire */
+.proprietaire-type {
+    color: #6c757d;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Badge de vérification */
+.proprietaire-badge {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* Grille des statistiques */
+.proprietaire-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+/* Élément de statistique */
+.proprietaire-stat {
+    background: white;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Valeur de la statistique */
+.proprietaire-stat-value {
+    font-size: 16px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Label de la statistique */
+.proprietaire-stat-label {
+    font-size: 11px;
+    color: #6c757d;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+/* Section À propos du propriétaire */
+.proprietaire-about {
+    padding: 12px;
+    background: white;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #495057;
+    line-height: 1.6;
+    border-left: 4px solid #667eea;
+}
+
+/* Bouton de contact */
+.proprietaire-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.proprietaire-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+/* ================================================================
+   SECTION CARTE (LOCALISATION)
+   Affichage de la carte Google Maps
+   ================================================================ */
+
+.section-carte {
+    margin-top: 20px;
+    padding: 0;
+}
+
+/* Titre de la carte */
+.titre-carte {
+    font-size: 18px;
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 15px;
+}
+
+/* Conteneur de la carte */
+.carte-conteneur {
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    position: relative;
+}
+
+/* iFrame de la carte */
+.carte-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 15px;
+}
+
+/* Placeholder si carte non chargée */
+.carte-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #6c757d;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* ================================================================
+   DISPOSITION DES DESCRIPTIONS ET ATOUTS
+   Grille à 2 colonnes pour description/atouts
+   ================================================================ */
+
+.disposition-descriptions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+/* Colonne de description */
+.colonne-description {
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    border-left: none;
+    box-shadow: none;
+    transition: none;
+}
+
+.colonne-description:hover {
+    box-shadow: none;
+    transform: none;
+}
+
+/* Colonne des atouts */
+.colonne-atouts {
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    border-left: none;
+    box-shadow: none;
+    transition: none;
+}
+
+.colonne-atouts:hover {
+    box-shadow: none;
+    transform: none;
+}
+
+/* Titres des colonnes */
+.colonne-description h3,
+.colonne-atouts h3 {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #212529;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+/* Icône description */
+.colonne-description h3::before {
+    content: "📝";
+    font-size: 28px;
+}
+
+/* Icône atouts */
+.colonne-atouts h3::before {
+    content: "⭐";
+    font-size: 28px;
+}
+
+/* ================================================================
+   BOÎTE DE PRIX
+   Section principale affichant le prix et CTA
+   ================================================================ */
+
+.boite-prix {
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    color: #212529;
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    margin: 0;
+    flex-shrink: 0;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    min-width: 240px;
+    transition: all 0.3s ease;
+    border: 3px solid rgba(102, 126, 234, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.boite-prix:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(102, 126, 234, 0.25);
+}
+
+/* Label du prix */
+.price-label {
+    font-size: 14px;
+    color: #6c757d;
+    margin: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Prix (chiffre) */
+.boite-prix .prix {
+    font-size: 56px;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+/* Période (par mois/par jour, etc.) */
+.boite-prix .periode {
+    font-size: 20px;
+    opacity: 1;
+    font-weight: 600;
+    color: #6c757d;
+    margin: 0;
+}
+
+/* Bouton CTA (Call To Action) */
+.cta-button {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+}
+
+/* Zone d'information (éligibilité, etc.) */
+.info-highlight {
+    background: rgba(102, 126, 234, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+    margin: 0;
+    text-align: center;
+}
+
+.info-highlight p {
+    font-size: 13px;
+    color: #667eea;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* ================================================================
+   SECTION VIBE ET NOTATION
+   Section avec notation globale du logement
+   ================================================================ */
+
+.section-vibe {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 45px;
+    border-radius: 20px;
+    margin-top: 40px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+    transition: all 0.3s ease;
+}
+
+.section-vibe:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(102, 126, 234, 0.3);
+}
+
+.section-vibe h2 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.section-vibe p {
+    font-size: 48px;
+    margin: 0;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ================================================================
+   ANNONCES SIMILAIRES
+   Grille de cartes pour les logements similaires
+   ================================================================ */
+
+.section-similaire {
+    margin-top: 80px;
+    padding-top: 50px;
+    border-top: 3px solid #ecf0f1;
+}
+
+.section-similaire h2 {
+    color: #2c3e50;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* Ligne décorée sous le titre */
+.section-similaire h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #e74c3c, #e67e22);
+    border-radius: 2px;
+}
+
+/* Grille des annonces similaires */
+.grille-similaire {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+}
+
+/* Carte d'une annonce similaire */
+.carte-similaire {
+    flex: 0 0 calc(25% - 15px); /* 4 colonnes */
+    min-width: 250px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border-left: 4px solid #3498db;
+}
+
+.carte-similaire:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-left-color: #e74c3c;
+}
+
+/* Prix sur la carte */
+.carte-similaire .prix-carte {
+    color: #3498db;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Période du prix */
+.carte-similaire .periode-carte {
+    color: #3498db;
+    font-size: 14px;
+}
+
+/* Description sur la carte */
+.carte-similaire .description-carte {
+    color: #6c757d;
+    font-size: 14px;
+    margin: 12px 0;
+    min-height: auto;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* Date de disponibilité */
+.carte-similaire .date-carte {
+    color: #868e96;
+    font-size: 12px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* Bouton des cartes similaires */
+.carte-similaire button {
+    width: 100%;
+    padding: 12px 15px;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.carte-similaire button:hover {
+    background: linear-gradient(135deg, #2980b9 0%, #1a5276 100%);
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+}
+
+/* ================================================================
+   PIED DE PAGE (FOOTER)
+   Section basse du site avec liens
+   ================================================================ */
+
+footer {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 40px 30px;
+    text-align: center;
+    margin-top: 60px;
+    border-top: none;
+}
+
+footer a {
+    color: #adb5bd;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+footer a:hover {
+    color: #667eea;
+    text-decoration: none;
+}
+
+/* ================================================================
+   RESPONSIVE DESIGN
+   Adaptation aux différents appareils
+   ================================================================ */
+
+/* ========== TABLETTE (1024px et moins) ========== */
+@media (max-width: 1024px) {
+    /* Afficher 2 colonnes au lieu de 4 */
+    .carte-similaire {
+        flex: 0 0 calc(50% - 10px);
+    }
+}
+
+/* ========== MOBILE (768px et moins) ========== */
+@media (max-width: 768px) {
+    /* Réduire la hauteur du carrousel */
+    .diapositive-carrousel {
+        height: 300px;
+    }
+
+    /* Boutons du carrousel plus petits */
+    .bouton-precedent-carrousel,
+    .bouton-suivant-carrousel {
+        padding: 10px 15px;
+        font-size: 18px;
+    }
+
+    /* Header en mode colonne */
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    /* Navigation responsive */
+    nav {
+        width: 100%;
+        justify-content: space-around;
+        font-size: 14px;
+    }
+
+    /* Conteneur et contenu principal */
+    .conteneur {
+        padding: 0 15px;
+        margin: 20px auto;
+    }
+
+    .contenu-principal {
+        padding: 20px;
+    }
+
+    /* Titre responsive */
+    h1 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    /* Bloc info responsive */
+    .bloc-info h2 {
+        font-size: 15px;
+    }
+
+    /* Boîte de prix responsive */
+    .boite-prix {
+        padding: 25px;
+    }
+
+    .boite-prix .prix {
+        font-size: 32px;
+    }
+
+    .boite-prix .periode {
+        font-size: 18px;
+    }
+
+    /* Annonces similaires en colonne */
+    .grille-similaire {
+        flex-direction: column;
+    }
+
+    .carte-similaire {
+        flex: 1 1 auto;
+        min-width: 100%;
+    }
+
+    .section-similaire h2 {
+        font-size: 18px;
+    }
+
+    /* Footer responsive */
+    footer {
+        padding: 15px;
+    }
+
+    footer a {
+        display: block;
+        margin: 8px 0;
+        font-size: 12px;
+    }
+}
