@@ -3,21 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PageAnnonce</title>
+    <title>Page Annonce</title>
+    <!-- Lien vers le fichier CSS externe -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- ========== EN-TÊTE DU SITE ========== -->
     <header>
-        <img class=logo src="media/pictures/the-smiling-anvils-housing-picture.png" alt="logo" width="200" height="200">
-        <h1>The Anvils Housing</h1>
-        <p>Trouvez votre logement étudiant facilement et cela avec des critères encore jamais vu dans les domaines de l'immobilier</p>
+        <!-- Ligne supérieure avec logo et navigation -->
+        <div class="header-top">
+            <div class="logo">
+                <img src="media/pictures/the-smiling-anvils-housing-picture.png" alt="The Anvils Logo">
+                <span>The Anvils</span>
+                <span class="logo-sous-titre">Housing</span>
+            </div>
+            <!-- Navigation principale -->
+            <nav>
+                <button>Etudiant</button>
+                <button>Favoris</button>
+                <button>Conversations</button>
+            </nav>
+        </div>
+
+        <!-- Barre de recherche et filtres -->
+        <div class="barre-recherche-container">
+            <!-- Champ de recherche -->
+            <input type="text" class="champ-recherche" placeholder="Où cherchez-vous ?">
+
+            <!-- Filtres avec dropdowns -->
+            <div class="conteneur-filtres">
+                <!-- Dropdown Type de logement -->
+                <div class="dropdown">
+                    <button class="dropdown-bouton">Type de logement</button>
+                    <div class="dropdown-menu">
+                        <div>Studio</div>
+                        <div>Logement entier</div>
+                        <div>Colocation</div>
+                        <div>Coliving</div>
+                        <div>Studio</div>
+                    </div>
+                </div>
+
+                <!-- Dropdown Pièces -->
+                <div class="dropdown">
+                    <button class="dropdown-bouton">Pièces</button>
+                    <div class="dropdown-menu">
+                        <div>1 pièce</div>
+                        <div>2 pièces</div>
+                        <div>3 pièces</div>
+                        <div>4 pièces</div>
+                        <div>5+ pièces</div>
+                    </div>
+                </div>
+
+                <!-- Dropdown Budget -->
+                <div class="dropdown">
+                    <button class="dropdown-bouton">Budget</button>
+                    <div class="dropdown-menu">
+                        <div>Moins de 300€</div>
+                        <div>300€ - 500€</div>
+                        <div>500€ - 700€</div>
+                        <div>700€ - 1000€</div>
+                        <div>Plus de 1000€</div>
+                    </div>
+                </div>
+
+                <!-- Dropdown Vibe de la location -->
+                <div class="dropdown">
+                    <button class="dropdown-bouton">Vibe de la location</button>
+                    <div class="dropdown-menu">
+                        <div>Calme et tranquille</div>
+                        <div>Animé et social</div>
+                        <div>Bien situé</div>
+                        <div>Nature</div>
+                        <div>Moderne</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bouton Rechercher -->
+            <button class="bouton-rechercher">Rechercher</button>
+        </div>
     </header>
+
+    <!-- ========== CONTENEUR PRINCIPAL ========== -->
+    <div class="conteneur">
+        <!-- ========== DISPOSITION À DEUX COLONNES ========== -->
+        <div class="disposition-principale">
+            <!-- COLONNE GAUCHE : Retour et Prix -->
+            <div class="colonne-gauche">
+                <div class="section-retour-prix">
+                    <!-- Lien de retour à l'accueil -->
+                    <a href="#" class="lien-retour">&lt; Retour à l'accueil</a>
+
+                    <!-- ========== PRIX EN ÉVIDENCE ========== -->
+                    <div class="boite-prix">
+                        <p class="price-label">À partir de</p>
+                        <div class="prix">600€<span class="periode">/mois</span></div>
+                        <button class="cta-button">Réserver maintenant</button>
+                        <div class="info-highlight">
+                            <p>✓ Éligible APL & ALS</p>
+                        </div>
+                    </div>
+
+                    <!-- ========== SECTION PROPRIETAIRE ========== -->
+                    <div class="section-proprietaire">
+                        <div class="proprietaire-header">
+                            <div class="proprietaire-avatar">M</div>
+                            <div class="proprietaire-info">
+                                <div class="proprietaire-nom">Misenloc</div>
+                                <div class="proprietaire-type">
+                                    Propriétaire Pro
+                                    <span class="proprietaire-badge">✓ Vérifié</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="proprietaire-stats">
+                            <div class="proprietaire-stat">
+                                <div class="proprietaire-stat-value">4.5★</div>
+                                <div class="proprietaire-stat-label">Note</div>
+                            </div>
+                            <div class="proprietaire-stat">
+                                <div class="proprietaire-stat-value">33%</div>
+                                <div class="proprietaire-stat-label">Réponse</div>
+                            </div>
+                        </div>
+
+                        <div class="proprietaire-about">
+                            Misenloc est une équipe de professionnels expérimentés dans la gestion de propriétés étudiantes depuis plus de 10 ans. Nous mettons un point d'honneur à offrir des logements de qualité dans une ambiance chaleureuse et conviviale. Vos questions sont nos priorités !
+                        </div>
+
+                        <button class="proprietaire-btn">Contacter</button>
+                    </div>
+
+                    <!-- ========== SECTION CARTE DE LOCALISATION ========== -->
+                    <div class="section-carte">
+                        <div class="titre-carte">📍 Localisation</div>
+                        <div class="carte-conteneur">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2487.533037665722!2d-1.573551340739137!3d43.44404578364922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5114f1ff26366d%3A0x9376b5c69733ef3!2s474%20Rue%20Harguin%20Etcheberry%2C%2064210%20Bidart!5e0!3m2!1ses!2sfr!4v1766792368150!5m2!1ses!2sfr" class="carte-iframe" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLONNE DROITE : Carrousel et Descriptions -->
+            <div class="colonne-droite">
+                <!-- Carrousel d'images du logement (CSS pur, sans JavaScript) -->
+                <div class="conteneur-carrousel">
+                    <!-- Radio buttons cachés pour contrôler les diapositives -->
+                    <input type="radio" id="diapositive1" name="carrousel" class="commande-carrousel" checked>
+                    <input type="radio" id="diapositive2" name="carrousel" class="commande-carrousel">
+                    <input type="radio" id="diapositive3" name="carrousel" class="commande-carrousel">
+                    <input type="radio" id="diapositive4" name="carrousel" class="commande-carrousel">
+                    <input type="radio" id="diapositive5" name="carrousel" class="commande-carrousel">
+
+                    <!-- Conteneur des images -->
+                    <div class="diapositives-carrousel">
+                        <!-- Image 1 -->
+                        <div class="diapositive-carrousel">
+                            <img src="media/pictures/maison1.jpg" alt="Photo du logement 1">
+                        </div>
+                        <!-- Image 2 -->
+                        <div class="diapositive-carrousel">
+                            <img src="media/pictures/maison2.webp" alt="Photo du logement 2">
+                        </div>
+                        <!-- Image 3 -->
+                        <div class="diapositive-carrousel">
+                            <img src="media/pictures/maison3.webp" alt="Photo du logement 3">
+                        </div>
+                        <!-- Image 4 -->
+                        <div class="diapositive-carrousel">
+                            <img src="media/pictures/maison4.jpg" alt="Photo du logement 4">
+                        </div>
+                        <div class="diapositive-carrousel">
+                            <img src="media/pictures/maison5.jpg" alt="Photo du logement 5">
+                        </div>
+                    </div>
+
+                    <!-- Boutons de navigation circulaires -->
+                    <!-- Boutons précédent -->
+                    <label for="diapositive5" class="bouton-carrousel bouton-precedent" data-prev="5">◀</label>
+                    <label for="diapositive4" class="bouton-carrousel bouton-precedent" data-prev="4">◀</label>
+                    <label for="diapositive1" class="bouton-carrousel bouton-precedent" data-prev="1">◀</label>
+                    <label for="diapositive2" class="bouton-carrousel bouton-precedent" data-prev="2">◀</label>
+                    <label for="diapositive3" class="bouton-carrousel bouton-precedent" data-prev="3">◀</label>
+
+                    <!-- Boutons suivant -->
+                    <label for="diapositive2" class="bouton-carrousel bouton-suivant" data-next="2">▶</label>
+                    <label for="diapositive3" class="bouton-carrousel bouton-suivant" data-next="3">▶</label>
+                    <label for="diapositive4" class="bouton-carrousel bouton-suivant" data-next="4">▶</label>
+                    <label for="diapositive5" class="bouton-carrousel bouton-suivant" data-next="5">▶</label>
+                    <label for="diapositive1" class="bouton-carrousel bouton-suivant" data-next="1">▶</label>
+                </div>
+
+                <!-- ========== DESCRIPTIONS SOUS LE CARROUSEL ========== -->
+                <div class="contenu-principal">
+                    <!-- Titre et localisation -->
+                    <div class="title-section">
+                        <h1>Belle Colocation Étudiante à Bidart</h1>
+                        <p class="location">📍 474 Rue Harguin Etcheberry, 64210 Bidart, France</p>
+                    </div>
+
+                    <!-- Badges -->
+                    <div class="badges">
+                        <span class="badge">✨ Coup de cœur</span>
+                        <span class="badge">🏠 Meublé</span>
+                        <span class="badge">📶 Fibre 1Gb/s</span>
+                        <span class="badge">🧺 Équipée</span>
+                        <span class="badge">🚇 Métro 2min</span>
+                    </div>
+
+                    <!-- Section Description générale -->
+                    <div class="description-section">
+                        <h2>📝 Description</h2>
+                        <p>Bienvenue dans cette accueillante colocation située à Bidart, une belle commune côtière du Pays Basque ! Votre logement combine confort moderne et ambiance conviviale pour un cadre de vie idéal.</p>
+                        <p>Située à proximité des plages et de la nature basque, vous profiterez d'un environnement calme et agréable. Un lieu parfait pour les étudiants et jeunes actifs cherchant l'équilibre entre la sérénité et l'accès aux commodités !</p>
+                    </div>
+
+                    <!-- Section Caractéristiques -->
+                    <div class="description-section">
+                        <h2>✨ Caractéristiques</h2>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon">🏠</div>
+                                <span>200 m² sur 4 niveaux</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🛏️</div>
+                                <span>8 chambres privées</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🚿</div>
+                                <span>2 salles de bains</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">👨‍🍳</div>
+                                <span>Cuisine tout équipée</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🪴</div>
+                                <span>Petit patio privé</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🧹</div>
+                                <span>Ménage hebdomadaire</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section Équipements & Services -->
+                    <div class="description-section">
+                        <h2>🎯 Équipements & Services</h2>
+                        <p><strong>Dans la cuisine :</strong> Four, plaques vitrocéramiques, micro-ondes, lave-vaisselle, grand réfrigérateur-congélateur, ustensiles complets</p>
+                        <p><strong>Espaces communs :</strong> Salon avec canapé et télé 55", grande table à manger 10 places, buanderie avec lave-linge et sèche-linge</p>
+                        <p><strong>Services inclus :</strong> Wifi Fibre ultra-rapide, Netflix, ménage hebdomadaire des parties communes, toutes charges incluses (eau, gaz, électricité)</p>
+                    </div>
+
+                    <!-- Section Localisation & Transports -->
+                    <div class="description-section">
+                        <h2>📍 Localisation & Transports</h2>
+                        <p>🚌 Bus : Réseau de transport local pour accéder à Bayonne et Biarritz</p>
+                        <p>🏖️ Plages : 15 minutes à pied (Bidart possède plusieurs plages superbes)</p>
+                        <p>🚂 Gare de Bayonne : 25 minutes en voiture pour l'accès TER/SNCF</p>
+                        <p>🏛️ Centre de Bidart : 10 minutes à pied (commerces, restaurants)</p>
+                        <p>🛒 Supermarché Carrefour City : 5 minutes en voiture</p>
+                    </div>
+
+                    <!-- Section Modalités & Documents -->
+                    <div class="description-section">
+                        <h2>📋 Modalités & Documents</h2>
+                        <p><strong>Durée minimum :</strong> 6 mois</p>
+                        <p><strong>Dépôt de garantie :</strong> 1 mois de loyer</p>
+                        <p><strong>Documents requis :</strong> Pièce d'identité, certificat de scolarité ou contrat de travail, RIB, justificatif de garant (revenus x3 le loyer)</p>
+                        <p><strong>Disponibilité :</strong> Immédiate</p>
+                    </div>
+
+                    <!-- Section Vibe et notation -->
+                    <div class="section-vibe">
+                        <h2>Vibe et notation du logement</h2>
+                        <p>⭐⭐⭐⭐⭐</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== ANNONCES SIMILAIRES ========== -->
+        <div class="section-similaire">
+            <h2>Annonces similaires :</h2>
+            <div class="grille-similaire">
+                <!-- Annonce 1 -->
+                <div class="carte-similaire">
+                    <img src="media/pictures/colocationESTIA.avif" alt="Logement similaire 1" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+                    <div class="prix-carte">500€ <span class="periode-carte">/mois</span></div>
+                    <div class="description-carte">Studio cosy avec balcon - Quartier Chartrons</div>
+                    <div class="date-carte">📅 Disponible 01/01/2026</div>
+                    <button>Découvrir</button>
+                </div>
+                <!-- Annonce 2 -->
+                <div class="carte-similaire">
+                    <img src="media/pictures/colocationESTIA.avif" alt="Logement similaire 2" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+                    <div class="prix-carte">550€ <span class="periode-carte">/mois</span></div>
+                    <div class="description-carte">Coloc moderne 6 pers - Hyper-centre</div>
+                    <div class="date-carte">📅 Disponible 01/02/2026</div>
+                    <button>Découvrir</button>
+                </div>
+                <!-- Annonce 3 -->
+                <div class="carte-similaire">
+                    <img src="media/pictures/colocationESTIA.avif" alt="Logement similaire 3" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+                    <div class="prix-carte">480€ <span class="periode-carte">/mois</span></div>
+                    <div class="description-carte">T2 rénové - Proche université</div>
+                    <div class="date-carte">📅 Disponible 15/01/2026</div>
+                    <button>Découvrir</button>
+                </div>
+                <!-- Annonce 4 -->
+                <div class="carte-similaire">
+                    <img src="media/pictures/colocationESTIA.avif" alt="Logement similaire 4" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+                    <div class="prix-carte">600€ <span class="periode-carte">/mois</span></div>
+                    <div class="description-carte">Grande colocation avec jardin</div>
+                    <div class="date-carte">📅 Disponible 20/01/2026</div>
+                    <button>Découvrir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== PIED DE PAGE ========== -->
     <footer>
-        <a>Accueil</a>
-        <a>Dernières Annonces</a>
-        <a>Contact</a>
+        <a href="#">ESTIA Allianz - la garantie Anvils Housing</a>
+        <a href="#">Allianz - L'assurance Habitation et la garantie Anvils Housing</a>
+        <a href="#">Mentions légales</a>
+        <a href="#">Aide</a>
+        <a href="#">CGU</a>
     </footer>
-    <nav>
-        <p> Pub</p> 
-    </nav>
 </body>
 </html>
