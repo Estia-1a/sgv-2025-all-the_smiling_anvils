@@ -16,7 +16,7 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    color: #212529;
+    color:  #0f9944;
     line-height: 1.6;
     padding-top: 180px; /* Espace pour le header fixe */
 }
@@ -27,7 +27,7 @@ body {
    ================================================================ */
 
 header {
-    background: rgba(255, 255, 255, 0.95);
+    background: #28333f;
     backdrop-filter: blur(10px); /* Effet de flou derrière le header */
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     padding: 20px 30px;
@@ -56,7 +56,7 @@ header {
 .logo {
     font-size: 28px;
     font-weight: 800;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -67,9 +67,10 @@ header {
 
 /* Image du logo personnalisée */
 .logo img {
-    width: 32px;
-    height: 32px;
+    width: 100px;
+    height: 100px;
     object-fit: contain;
+    border-radius: 20%;
 }
 
 /* Désactiv le pseudo-élément ::before si présent */
@@ -82,7 +83,7 @@ header {
     font-size: 14px;
     font-weight: 600;
     color: #6c757d;
-    letter-spacing: 2px;
+    letter-spacing: 10px;
     text-transform: uppercase;
     margin-left: 0;
 }
@@ -132,15 +133,15 @@ header {
 /* Élément dropdown individuel */
 .dropdown {
     position: relative;
-    background-color: white;
+    background-color: #0f9944;
     border-radius: 4px;
     overflow: visible; /* Permet au menu de s'afficher au-dessus */
 }
 
 /* Bouton du dropdown */
 .dropdown-bouton {
-    background-color: white;
-    color: #333;
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);;
+    color: #f0f0f0;;
     padding: 12px 15px;
     border: none;
     border-radius: 4px;
@@ -162,7 +163,7 @@ header {
 .dropdown-bouton::after {
     content: "▼";
     font-size: 10px;
-    color: #666;
+    color: #f0f0f0;
 }
 
 /* Menu dropdown (masqué par défaut) */
@@ -211,7 +212,7 @@ header {
 /* ========== BOUTON RECHERCHER ========== */
 /* Bouton principal de recherche */
 .bouton-rechercher {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
     color: white;
     padding: 12px 30px;
     border: none;
@@ -248,7 +249,7 @@ nav {
 nav button {
     background: none;
     border: none;
-    color: #495057;
+    color:  #73d498;
     cursor: pointer;
     font-size: 15px;
     font-weight: 600;
@@ -259,9 +260,15 @@ nav button {
 
 /* Hover sur les boutons de navigation */
 nav button:hover {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
     color: white;
     transform: translateY(-2px);
+}
+
+.pdp{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
 }
 
 /* ================================================================
@@ -278,7 +285,7 @@ nav button:hover {
 
 /* Lien de retour à l'accueil */
 .lien-retour {
-    color: rgba(102, 126, 234, 0.5);
+    color: #0f9944;
     text-decoration: none;
     margin-bottom: 0;
     display: inline-flex;
@@ -496,7 +503,7 @@ h1::after {
 
 /* Badge individuel */
 .badge {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
     color: white;
     padding: 10px 20px;
     border-radius: 25px;
@@ -537,7 +544,7 @@ h1::after {
     transform: translateY(-50%);
     width: 5px;
     height: 30px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
     border-radius: 3px;
 }
 
@@ -575,7 +582,7 @@ h1::after {
 .feature-icon {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -649,7 +656,7 @@ h1::after {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -685,7 +692,7 @@ h1::after {
 
 /* Badge de vérification */
 .proprietaire-badge {
-    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
     color: white;
     padding: 3px 10px;
     border-radius: 10px;
@@ -712,7 +719,7 @@ h1::after {
 .proprietaire-stat-value {
     font-size: 16px;
     font-weight: 700;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -734,14 +741,14 @@ h1::after {
     font-size: 13px;
     color: #495057;
     line-height: 1.6;
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #73d498;
 }
 
 /* Bouton de contact */
 .proprietaire-btn {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
     color: white;
     border: none;
     border-radius: 10px;
@@ -803,7 +810,7 @@ h1::after {
     justify-content: center;
     font-size: 14px;
     color: #6c757d;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
     color: white;
     text-align: center;
     padding: 20px;
@@ -896,7 +903,7 @@ h1::after {
     box-shadow: 0 10px 40px rgba(0,0,0,0.15);
     min-width: 240px;
     transition: all 0.3s ease;
-    border: 3px solid rgba(102, 126, 234, 0.3);
+    border: 3px solid #73d498;
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -923,7 +930,7 @@ h1::after {
     font-weight: 900;
     margin: 0;
     letter-spacing: 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -943,7 +950,7 @@ h1::after {
 .cta-button {
     width: 100%;
     padding: 18px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
     color: white;
     border: none;
     border-radius: 12px;
@@ -970,7 +977,7 @@ h1::after {
 
 .info-highlight p {
     font-size: 13px;
-    color: #667eea;
+    color: #26b759;
     font-weight: 700;
     margin: 0;
 }
@@ -981,7 +988,7 @@ h1::after {
    ================================================================ */
 
 .section-vibe {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
     color: white;
     padding: 45px;
     border-radius: 20px;
@@ -1040,7 +1047,7 @@ h1::after {
     left: 0;
     width: 50px;
     height: 3px;
-    background: linear-gradient(90deg, #e74c3c, #e67e22);
+    background: linear-gradient(90deg,#a822d5, #0ce37f);
     border-radius: 2px;
 }
 
@@ -1060,18 +1067,18 @@ h1::after {
     padding: 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
-    border-left: 4px solid #3498db;
+    border-left: 4px solid #73d498;
 }
 
 .carte-similaire:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    border-left-color: #e74c3c;
+    border-left-color: #a822d5;
 }
 
 /* Prix sur la carte */
 .carte-similaire .prix-carte {
-    color: #3498db;
+    color: #73d498;
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -1079,7 +1086,7 @@ h1::after {
 
 /* Période du prix */
 .carte-similaire .periode-carte {
-    color: #3498db;
+    color: #73d498;
     font-size: 14px;
 }
 
@@ -1105,7 +1112,7 @@ h1::after {
 .carte-similaire button {
     width: 100%;
     padding: 12px 15px;
-    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    background: linear-gradient(90deg,#a822d5, #0ce37f);
     color: white;
     border: none;
     border-radius: 6px;
@@ -1118,7 +1125,7 @@ h1::after {
 }
 
 .carte-similaire button:hover {
-    background: linear-gradient(135deg, #2980b9 0%, #1a5276 100%);
+    background: linear-gradient(90deg,#a822d5, #0ce37f);
     transform: scale(1.02);
     box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
 }
@@ -1148,7 +1155,7 @@ footer a {
 }
 
 footer a:hover {
-    color: #667eea;
+    color: #73d498;
     text-decoration: none;
 }
 
