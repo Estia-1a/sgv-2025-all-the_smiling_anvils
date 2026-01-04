@@ -354,67 +354,90 @@ footer a:hover {
 
 
 
-.finalpart {
+
+footer.finalpart {
     display: flex;
-    flex-direction: column; 
-    padding: 30px 40px;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #28333f;
+    padding: 40px 60px;
+    gap: 60px;
 }
 
-.footer-links {
+/* Colonnes du footer */
+.footer-col {
+    flex: 1;
     display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 12px;
 }
 
-.footer-links a {
+/* Titres des colonnes */
+.footer-title {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Liens du footer */
+.footer-col a {
+    color: white;
     text-decoration: none;
-    color: black;
+    font-size: 14px;
+    transition: all 0.3s;
+    padding: 5px 0;
 }
 
-.footer-links a:hover {
+.footer-col a:hover {
+    color: #1abc9c;
     text-decoration: underline;
 }
 
+/* Section réseaux sociaux */
 .footer-reseaux {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 15px;
 }
 
 .reseaux-icons {
     display: flex;
-    gap: 10px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.reseaux-icons a {
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    padding: 0;
+}
+
+.reseaux-icons a:hover {
+    background: #1abc9c;
+    border-color: #1abc9c;
+    transform: scale(1.1);
 }
 
 .reseaux-icons img {
     width: 22px;
     height: 22px;
-    cursor: pointer;
-    transition: transform 0.2s;
+    object-fit: contain;
 }
 
-.reseaux-icons img:hover {
-    transform: scale(1.2);
-}
-
-#right {
-    display: flex;
-    justify-content: flex-start;
-}
-
-#left {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin-bottom: 20px; /* espace avec "rejoignez-nous" */
-}
-
-#left a {
-    color: white;
-    text-decoration: none;
-}
-
-#left a:hover {
-    text-decoration: underline;
+/* Responsive */
+@media (max-width: 768px) {
+    footer.finalpart {
+        flex-direction: column;
+        gap: 30px;
+        padding: 30px 20px;
+    }
 }
 
