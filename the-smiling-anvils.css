@@ -1,264 +1,316 @@
-body {
-  font-family: Arial, sans-serif; /* */
-  margin: 0; /* */
-  padding: 0; /* */
-  background: #f8f8f8; 
+/* ================================================================
+   STYLES GÉNÉRAUX - The Anvils Housing
+   Page d'Accueil - Design Moderne et Épuré
+   ================================================================ */
+
+/* ========== RÉINITIALISATION GLOBALE ========== */
+/* Supprime les marges et padding par défaut de tous les éléments */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Inclut les bordures et padding dans la largeur/hauteur */
 }
+
+/* ========== STYLES DU CORPS DE PAGE ========== */
+/* Définit les styles globaux : police, arrière-plan, couleur du texte */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color:  #0f9944;
+    line-height: 1.6;
+    padding-top: 180px; /* Espace pour le header fixe */
+}
+
+/* ================================================================
+   EN-TÊTE DU SITE (HEADER)
+   Conteneur fixe avec logo, barre de recherche et filtres
+   ================================================================ */
 
 header {
-  background: #28333f;
-  color: white;
-  padding: 15px; /* */
+    background: #28333f;
+    backdrop-filter: blur(10px); /* Effet de flou derrière le header */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+    position: fixed; /* Reste fixe au sommet pendant le scroll */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Reste au-dessus de tous les éléments */
+    width: 100%;
 }
 
-.top{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.5); /* */
+/* ========== LIGNE SUPÉRIEURE DU HEADER ========== */
+/* Contient le logo et la navigation principale */
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.top_right{
-  display: flex;
-  flex-direction: row;
-  justify-content: end;
-  justify-content: space-around;
-  height: 50px;
-  width: 350px;
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.5); /* */
+.profil_section{
+    background: #28333f;
+    display: flex;
+    justify-content: flex-end;
 }
 
+/* ========== LOGO ========== */
+/* Logo de The Anvils avec dégradé de couleur */
 .logo {
-  display: flex;
-  justify-content: flex-start; /* */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.5); /* */
-  border-radius: 5px;
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Image du logo personnalisée */
+.logo img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 20%;
+}
+
+/* Désactiv le pseudo-élément ::before si présent */
+.logo::before {
+    display: none;
+}
+
+/* Sous-titre du logo "Housing" */
+.logo-sous-titre {
+    font-size: 14px;
+    font-weight: 600;
+    color: #6c757d;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    margin-left: 0;
+}
+
+/* ========== BARRE DE RECHERCHE ========== */
+/* Conteneur pour la barre de recherche et les filtres */
+.barre-recherche-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+    border-radius: 8px;
+}
+
+/* Champ de saisie pour la recherche */
+.champ-recherche {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    color: #333;
+}
+
+/* Placeholder du champ de recherche */
+.champ-recherche::placeholder {
+    color: #999;
+}
+
+/* Focus du champ de recherche avec ombre */
+.champ-recherche:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+/* ========== FILTRES DROPDOWN ========== */
+/* Conteneur pour tous les dropdowns */
+.conteneur-filtres {
+    display: flex;
+    gap: 15px;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+/* Élément dropdown individuel */
+.dropdown {
+    position: relative;
+    background-color: #0f9944;
+    border-radius: 4px;
+    overflow: visible; /* Permet au menu de s'afficher au-dessus */
+}
+
+/* Bouton du dropdown */
+.dropdown-bouton {
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);;
+    color: #f0f0f0;;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 150px;
+    transition: background-color 0.3s ease;
+}
+
+/* Effet hover sur le bouton */
+.dropdown-bouton:hover {
+    background-color: #f0f0f0;
+}
+
+/* Flèche du dropdown */
+.dropdown-bouton::after {
+    content: "▼";
+    font-size: 10px;
+    color: #f0f0f0;
+}
+
+/* Menu dropdown (masqué par défaut) */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 100;
+    margin-top: 5px;
+}
+
+/* Afficher le menu au hover du dropdown */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Éléments du menu dropdown */
+.dropdown-menu option-item,
+.dropdown-menu div {
+    padding: 12px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+/* Dernier élément sans bordure inférieure */
+.dropdown-menu option-item:last-child,
+.dropdown-menu div:last-child {
+    border-bottom: none;
+}
+
+/* Hover sur les éléments du menu */
+.dropdown-menu option-item:hover,
+.dropdown-menu div:hover {
+    background-color: #f9f9f9;
+}
+
+/* ========== BOUTON RECHERCHER ========== */
+/* Bouton principal de recherche */
+.bouton-rechercher {
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    align-self: center;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Effet hover avec animation */
+.bouton-rechercher:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+/* Effet click */
+.bouton-rechercher:active {
+    transform: translateY(0);
+}
+
+/* ========== NAVIGATION PRINCIPALE ========== */
+/* Barre de navigation avec boutons */
+nav {
+    display: flex;
+    gap: 20px;
+    background: #28333f;
+    align-items: center;
+}
+
+/* Boutons de navigation */
+nav button {
+    background: none;
+    border: none;
+    color:  #73d498;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+/* Hover sur les boutons de navigation */
+nav button:hover {
+    background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
+    color: white;
+    transform: translateY(-2px);
 }
 
 .pdp{
-  border-radius: 20px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
 }
 
-h1 {
-  color: #1abc9c;
-  display: flex;
-  justify-content: flex-start;
+.Pub {
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    color: #212529;
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    margin: 0;
+    flex-shrink: 0;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    min-width: 240px;
+    transition: all 0.3s ease;
+    border: 3px solid #73d498;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    gap: 25px;
 }
 
-div {
-  margin: 10px; /* */
-  color: #dadada;
+.Pub:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(102, 126, 234, 0.25);
 }
 
-.entête button {
-  padding: 10px 15px; /* */
-  background: #1abc9c;
-  color: white;
-  border: none; /* */
-  border-radius: 5px; /* */
-  cursor: pointer; /* */
+.Photo_Pub1{
+    border-radius: 10%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
 }
 
-.favori button {
-  padding: 10px 15px;
-  background: #e822d1;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.Photo_Pub2{
+    border-radius: 10%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
 }
 
-.recherche{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.barre_de_recherche {
-  display: flex;
-  align-items: flex-end; /* */
-  text-align: center; /* */
-  margin: 20px;
-  background-color: #28333f;
-}
-
-.barre_de_recherche input {
-  padding: 10px;
-  width: 300px;
-  border: 1px solid #ccc; /* */
-  border-radius: 5px;
-}
-
-.barre_de_recherche button {
-  padding: 10px 15px;
-  background: #1abc9c;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.dropdown {
-  position: relative; /* */
-  width: 1000px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding: 10px;
-}
-
-.dropdown-toggle1 {
-  width: 200px;
-  height: 40px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  background:  #28333f;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.dropdown-menu1 {
-  position: absolute;
-  color: #000000;
-  top: 45px;
-  width: 200px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
-  display: flex;
-  flex-direction: column;
-}
-
-.dropdown-toggle2 {
-  width: 200px;
-  height: 40px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  background:  #28333f;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.dropdown-menu2 {
-  position: absolute;
-  color: #000000;
-  top: 45px;
-  width: 260px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
-  display: flex;
-  flex-direction: column;
-}
-
-.dropdown-toggle3 {
-  width: 200px;
-  height: 40px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  background:  #28333f;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.dropdown-menu3 {
-  position: absolute;
-  color: #000000;
-  top: 45px;
-  width: 260px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
-  display: flex;
-  flex-direction: column;
-}
-.dropdown-toggle4 {
-  width: 200px;
-  height: 40px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  background:  #28333f;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.dropdown-menu4 {
-  position: absolute;
-  color: #000000;
-  top: 45px;
-  width: 260px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
-  display: flex;
-  flex-direction: column;
-}
-
-.dropdown-menu1 h3 {
-  margin-top: 0; /* */
-  margin-bottom: 10px; /* */
-  font-size: 16px; /* */
-}
-
-.dropdown-menu2 h3 {
-  margin-top: 0; /* */
-  margin-bottom: 10px; /* */
-  font-size: 16px; /* */
-}
-
-.dropdown-menu3 h3 {
-  margin-top: 0; /* */
-  margin-bottom: 10px; /* */
-  font-size: 16px; /* */
-}
-
-.dropdown-menu4 h3 {
-  margin-top: 0; /* */
-  margin-bottom: 10px; /* */
-  font-size: 16px; /* */
-}
-
-.dropdown-menu label {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap; /* */
-  gap: 8px;
-  margin-bottom: 20px;
-  width: 160px;
-  height: 20px;
-  cursor: pointer;
-}
-
-.actions { /* fonction permettant de réaliser sur Java une action futur pour ouvrir le menu des checkbox */
-  display: flex;
-  justify-content: space-between; /*  */
-  margin-top: 15px;
-}
-
-.clear { /* fonction permettant de réaliser sur Java l'action de fermer le menu des checkbox */
-  background: transparent; /* rend transparent le fond afin de dévoiler ce qu'il y a derrière */
-  border: none;
-  color: #4A4EE0;
-  cursor: pointer; /* transforme le curseur en main prête à cliquer sur la checkbox */
-}
-
-.apply { /*  */
-  background: #2ECC71;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px; /* arrondis les bordures de la box */
-  color: white;
-  cursor: pointer; /* transforme le curseur en main prête à cliquer sur la checkbox */
-}
 
 .liste_des_annonces {
   display: grid;
@@ -283,45 +335,40 @@ div {
   width: 100%; /* */
   height: 150px; /* */
   object-fit: cover; /* */
-  flex-shrink:0;
 }
 
 .annonce h3 {
   margin: 10px;
-  margin-bottom: 5px; 
-  font-size: 16px; 
-  line-height: 1.3; 
 }
 
 .annonce p {
-  margin: 5px 10px; /* Réduit les marges verticales */
+  margin: 10px;
   color: #282828;
-  font-size: 14px;
-  line-height: 1.4;
 }
 
 .annonce footer {
   margin: 0px;
+  padding: 10px;
   color: #f4f4f4;
   display: flex;
   align-items: flex-end;
 }
 
 .annonce button {
-  margin: 10px 20px; 
-  padding: 10px 20px;
-  background: #1abc9c;
+  margin: 10px;
+  padding: 10px;
+  background: linear-gradient(135deg, #0f9944 0%, #09b9c9 100%);
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
-  width: calc(100% - 40px); 
-
 }
 
 section.containers {
   display: flex;
   flex-direction: row;
+  margin: 100px auto;
+  padding: 0 30px;
 }
 
 nav{
@@ -357,11 +404,8 @@ footer a:hover {
   justify-content: space-around;
   align-items: start;
   background: #28333f;
-  height: 200px;
+  height: 300px;
 }
-
-
-
 
 footer.finalpart {
     display: flex;
@@ -448,5 +492,3 @@ footer.finalpart {
         padding: 30px 20px;
     }
 }
-
-
