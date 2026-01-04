@@ -1136,27 +1136,119 @@ h1::after {
    ================================================================ */
 
 footer {
-    background: rgba(0, 0, 0, 0.9);
-    color: white;
-    padding: 40px 30px;
-    text-align: center;
-    margin-top: 60px;
-    border-top: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #28333f;
 }
 
 footer a {
-    color: #adb5bd;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    letter-spacing: 0;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none; /* */
+  display: flex;
+  flex-direction: column; /* */
 }
 
 footer a:hover {
-    color: #73d498;
+  background: #1abc9c;
+}
+
+.finalpart {
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+  background: #28333f;
+  height: 300px;
+}
+
+
+
+
+footer.finalpart {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #28333f;
+    padding: 40px 60px;
+    gap: 60px;
+}
+
+/* Colonnes du footer */
+.footer-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Titres des colonnes */
+.footer-title {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Liens du footer */
+.footer-col a {
+    color: white;
     text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s;
+    padding: 5px 0;
+}
+
+.footer-col a:hover {
+    color: #1abc9c;
+    text-decoration: underline;
+}
+
+/* Section réseaux sociaux */
+.footer-reseaux {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.reseaux-icons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.reseaux-icons a {
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    padding: 0;
+}
+
+.reseaux-icons a:hover {
+    background: #1abc9c;
+    border-color: #1abc9c;
+    transform: scale(1.1);
+}
+
+.reseaux-icons img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    footer.finalpart {
+        flex-direction: column;
+        gap: 30px;
+        padding: 30px 20px;
+    }
 }
 
 /* ================================================================
