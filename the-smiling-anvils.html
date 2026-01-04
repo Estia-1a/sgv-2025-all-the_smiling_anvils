@@ -2,154 +2,140 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Accueil</title>
+    <!-- Lien vers le fichier CSS externe -->
     <link rel="stylesheet" href="the-smiling-anvils.css">
-    <title>The Anvils Housing Website</title>
 </head>
-
 <body>
-    <header class="entête">
-        <div class="top">
-            <img class="logo" src="media/pictures/the-smiling-anvils-housing-picture.png" alt="logo" width="100" height="100">
-            <div class="top_right">
-                <button class="favoris">Favoris</button>
-                <button class="profil">Profil</button>
-                <img class="pdp" src="media/pictures/pp.jpg" alt="pdp" width="40" height="40">
+    <!-- ========== EN-TÊTE DU SITE ========== -->
+    <header>
+        <!-- Ligne supérieure avec logo et navigation -->
+        <div class="header-top">
+            <div class="logo">
+                <img src="media/pictures/the-smiling-anvils-housing-picture.png" alt="The Anvils Logo">
+                <span>THE ANVILS</span>
+                <span class="logo-sous-titre">Housing</span>
             </div>
+            <!-- Navigation principale -->
+            <nav class="profil_section">
+                <button>Conversations</button>
+                <button>Favoris</button>
+                <button>Profil</button>
+                <img class="pdp" src="media/pictures/pp.jpg" alt="pdp">
+            </nav>
         </div>
-        <h1>The Anvils Housing</h1>
-        <h2>Trouvez votre logement étudiant facilement et cela avec des critères encore jamais vu dans l'immobilier</h2>
-        <div class="recherche">
-            <div class="barre_de_recherche"> <!-- Ceci permet de gérer la partie css en créant une partie " .barre_de_recherche" -->
-                <input type="text" placeholder="Rechercher une ville ou université..."> <!-- Ceci permet d'afficher dans la barre de recherche la phrase "Rechercher une ville ou université..."-->
+
+        <!-- Barre de recherche et filtres -->
+        <div class="barre-recherche-container">
+            <!-- Champ de recherche -->
+            <input type="text" class="champ-recherche" placeholder="Où cherchez-vous ?">
+
+            <!-- Filtres avec dropdowns -->
+            <div class="conteneur-filtres">
+                <!-- Dropdown Type de logement -->
+                <div class="dropdown">
+                    <button class="dropdown-bouton">Type de logement</button>
+                    <div class="dropdown-menu">
+                        <div>Studio</div>
+                        <div>Logement entier</div>
+                        <div>Colocation</div>
+                        <div>Coliving</div>
+                        <div>Studio</div>
+                    </div>
+                </div>
+
+                <!-- Dropdown Pièces -->
+                <div class="dropdown">
+                    <button class="dropdown-bouton">Pièces</button>
+                    <div class="dropdown-menu">
+                        <div>1 pièce</div>
+                        <div>2 pièces</div>
+                        <div>3 pièces</div>
+                        <div>4 pièces</div>
+                        <div>5+ pièces</div>
+                    </div>
+                </div>
+
+                <!-- Dropdown Budget -->
+                <div class="dropdown">
+                    <button class="dropdown-bouton">Budget</button>
+                    <div class="dropdown-menu">
+                        <div>Moins de 300€</div>
+                        <div>300€ - 500€</div>
+                        <div>500€ - 700€</div>
+                        <div>700€ - 1000€</div>
+                        <div>Plus de 1000€</div>
+                    </div>
+                </div>
+
+                <!-- Dropdown Vibe de la location -->
+                <div class="dropdown">
+                    <button class="dropdown-bouton">Vibe de la location</button>
+                    <div class="dropdown-menu">
+                        <div>Calme et tranquille</div>
+                        <div>Animé et social</div>
+                        <div>Bien situé</div>
+                        <div>Nature</div>
+                        <div>Moderne</div>
+                    </div>
+                </div>
             </div>
-            <div class="dropdown">
-                <button class="dropdown-toggle1">Type de logement ▼</button>
-                <div class="dropdown-menu1">
-                <!--    <h3>Type de logement</h3>
-                    <label><input type="checkbox"> Appartement</label>
-                    <label><input type="checkbox"> Maison</label>
-                    <label><input type="checkbox"> Studio</label>
-                    <label><input type="checkbox"> Caravane</label>
-                    <label><input type="checkbox"> Mobile Home</label>
-                    <label><input type="checkbox"> Mobile Apple</label>
-                    <label><input type="checkbox"> Cabane Fortnite</label>
-                    <label><input type="checkbox"> Maison squattée</label>             
-                    <div class="actions">
-                        <button class="clear">Effacer</button>
-                        <button class="apply">Appliquer</button>
-                    </div>-->
-                </div>
 
-                <button class="dropdown-toggle2">Pièces ▼</button>
-                <div class="dropdown-menu2">
-                <!--    <h3>Pièces</h3>
-                    <label><input type="checkbox"> T1</label>
-                    <label><input type="checkbox"> T2</label>
-                    <label><input type="checkbox"> T3</label>
-                    <label><input type="checkbox"> T72</label>
-                    <label><input type="checkbox"> Tigre</label>
-                    <label><input type="checkbox"> Pièces meublées</label>
-                    <label><input type="checkbox"> Pièces en argent</label>
-                    <label><input type="checkbox"> Pièces en or</label>
-
-                    <div class="actions">
-                        <button class="clear">Effacer</button>
-                        <button class="apply">Appliquer</button>
-                    </div>-->
-                </div>
-
-                <button class="dropdown-toggle3">Budget ▼</button>
-                <div class="dropdown-menu3">
-                <!--    <h3>Budget</h3>
-                    <label><input type="checkbox"> Gratuit (MDR)</label>
-                    <label><input type="checkbox"> 1 à 500</label>
-                    <label><input type="checkbox"> 500 à 1000</label>
-                    <label><input type="checkbox"> 1000 à infini</label>
-                    <label><input type="checkbox"> Tous</label>              
-                    <div class="actions">
-                        <button class="clear">Effacer</button>
-                        <button class="apply">Appliquer</button>
-                    </div>-->
-                </div>
-
-                <button class="dropdown-toggle4">Vibe de la colocation ▼</button>
-                <div class="dropdown-menu4">
-                <!--    <h3>Vibe de la colocation</h3>
-                    <label><input type="checkbox"> LGBTQAI+</label>
-                    <label><input type="checkbox"> avec homme</label>
-                    <label><input type="checkbox"> avec femme</label>
-                    <label><input type="checkbox"> Coloc 1ère Année</label>
-                    <label><input type="checkbox"> Coloc 2ème Année</label>
-                    <label><input type="checkbox"> Coloc 3ème Année</label>
-                    <label><input type="checkbox"> Coloc avec Zombie</label>
-                    <label><input type="checkbox"> Tous</label>             
-                    <div class="actions">
-                        <button class="clear">Effacer</button>
-                        <button class="apply">Appliquer</button>
-                    </div>-->
-                </div>
-
-                <button>Rechercher</button>
-
-            </div>
-        </div>    
+            <!-- Bouton Rechercher -->
+            <button class="bouton-rechercher">Rechercher</button>
+        </div>
     </header>
-    <footer>
-        <a href="">Accueil</a>
-        <a href="PageAnnonce.html">Dernières Annonces</a>
-        <a href="">Contact</a>
-    </footer>
 
     <section class="containers">
-        <h2 style="display: none;">Annonces de logements</h2>
         <nav>
-            <h2>Publicité: Armée de l'Air</h2>
-            <img class="Photo_Pub1" src="media/pictures/Rafale.jpg" alt="Photo_Pub1" width="320" height="200">
-            <p>Bonjour, vous rêvez de devenir aviateur, ne vous inquiétez pas, sauf si vous avez dépasser les 40 ans ou que vous avez une mauvaise santé c'est déjà mort pour vous, désolé. En tout cas rejoignez nous, c'est cool! Engagez vous sur notre site: Engagez vous.fr</p>
-            <h2>Publicité: Nouvelle Voiture</h2>
-            <img class="Photo_Pub2" src="media/pictures/mclarenp1.jpg" alt="Photo_Pub2" width="320" height="230">
-            <p>Pourquoi se contenter d'une voiture familiale tandis qu'on peut avoir une hypercar anglaise? Achetez dès maintenant la Mclaren P1 GTR Road legal. Vous en avez besoin!</p>
+            <div class="Pub">
+                <h1>Publicité: Armée de l'Air</h1>
+                <img class="Photo_Pub1" src="media/pictures/Rafale.jpg" alt="Photo_Pub1" width="320" height="200">
+                <p>Bonjour, vous rêvez de devenir aviateur, ne vous inquiétez pas, sauf si vous avez dépasser les 40 ans ou que vous avez une mauvaise santé c'est déjà mort pour vous, désolé. En tout cas rejoignez nous, c'est cool! Engagez vous sur notre site: <a href="https://devenir-aviateur.gouv.fr/">Engagez vous</a></p>
+                <h1>Publicité: Nouvelle Voiture</h1>
+                <img class="Photo_Pub2" src="media/pictures/mclarenp1.jpg" alt="Photo_Pub2" width="320" height="230">
+                <p>Pourquoi se contenter d'une voiture familiale tandis qu'on peut avoir une hypercar anglaise? Achetez dès maintenant la Mclaren P1 GTR Road legal. Vous en avez besoin! <a href="https://cars.mclaren.com/fr_fr">ACHETEZ!!</a></p>
+            </div>
         </nav>
 
         <section class="liste_des_annonces"> <!-- Ceci permet de gérer la partie css en créant une partie " .liste_des_annonces" -->
-        
+
+            <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
+                <img src="media/pictures/chateauversailles.jpg" alt="studio">
+                <h3>Studio étudiants ESTIA style Versailles <em>-étudiants aimant le sport et es maits raffinés-</em> </h3> 
+                <p>A partir de 450€/mois</p> <!-- Prix en euro/mois -->
+                <p>Localisation : 9 avenue des prés, 64210, Bidart</p>
+                <p>43m² - 3 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
+                <button type="button" onclick="location.href='PageAnnonce.html'">Voir l'annonce</button> <!-- bouton vers l'annonce -->
+                <footer>
+                    <p1>Disponibile à partir du 90 oct. 1816 </p1>
+                </footer>
+            </div>
+
             <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
                 <img src="media/pictures/dirthouse.jpg" alt="studio">
-                <h3>Location étudiante ESTIA
-                    <em> -Etudiants aimant faire la fête, faire des rencontres et la mécanique-</em></h3>
-                <p>A partir de 500€/mois</p> <!-- Prix en euro/mois -->
-                <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
-                <p>50m² - 4 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
-                <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
+                <h3>Studio étudiants ESTIA <em>-Etudiants aimant la tranquilité, la lecture et les apéros-</em></h3> 
+                <p>A partir de 600€/mois</p> <!-- Prix en euro/mois -->
+                <p>Localisation : 5 rue du vieux buffle, 64210, Bidart</p>
+                <p>800m² - 1 pièce - Non Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
+                <button type="button" onclick="location.href='PageAnnonce.html'">Voir l'annonce</button> <!-- bouton vers l'annonce -->
                 <footer>
-                    <p>Disponibile à partir du 39 jan. 2077 </p>
+                    <p1>Disponibile à partir du 39 jan. 2077 </p1>
                 </footer>          
             </div>
 
             <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
                 <img src="media/pictures/hutte.jpg" alt="studio">
-                <h3>Studio étudiants ESTIA <em>-Etudiants aimant la tranquilité, la lecture et les apéros-</em></h3> 
-                <p>A partir de 600€/mois</p> <!-- Prix en euro/mois -->
-                <p>Localisation : 5 rue du vieux buffle, 64210, Bidart</p>
-                <p>800m² - 1 pièce - Non Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
-                <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
+                <h3>Location étudiante ESTIA
+                    <em> -Etudiants aimant faire la fête, faire des rencontres et la mécanique-</em></h3>
+                <p>A partir de 500€/mois</p> <!-- Prix en euro/mois -->
+                <p>Localisation : 50, Allée des petits pains aux raisins, 64210, Bidart</p>
+                <p>50m² - 4 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
+                <button type="button" onclick="location.href='PageAnnonce.html'">Voir l'annonce</button> <!-- bouton vers l'annonce -->
                 <footer>
-                    <p>Disponibile à partir du 64 fév. 2192 </p>
+                    <p1>Disponibile à partir du 64 fév. 2192 </p1>
                 </footer>          
-            </div>
-
-            <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
-                <img src="media/pictures/chateauversailles.jpg" alt="studio">
-                <h3>Studio étudiants ESTIA style Versailles <em>-étudiants aimant le sport et l'informatique-</em> </h3> 
-                <p>A partir de 450€/mois</p> <!-- Prix en euro/mois -->
-                <p>Localisation : 9 avenue des prés, 64210, Bidart</p>
-                <p>43m² - 3 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
-                <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
-                <footer>
-                    <p>Disponibile à partir du 90 oct. 1816 </p>
-                </footer>
             </div>
 
             <div class="annonce"> <!-- Ceci permet de gérer la partie css en créant une partie " .annonce" -->
@@ -158,9 +144,9 @@
                 <p>A partir de 500€/mois</p> <!-- Prix en euro/mois -->
                 <p>Localisation : Eglise, 64210, Bidart</p>
                 <p>50m² - 4 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
-                <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
+                <button type="button" onclick="location.href='PageAnnonce.html'">Voir l'annonce</button> <!-- bouton vers l'annonce -->
                 <footer>
-                    <p>Disponibile à partir du 39 jan. 2077 </p>
+                    <p1>Disponibile à partir du 39 jan. 2077 </p1>
                 </footer>          
             </div>
 
@@ -171,8 +157,9 @@
                 <p>Localisation : 2 rue de la petite perle, 64210, Bidart</p>
                 <p>20m² - 1 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
                 <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
+                <button type="button" onclick="location.href='PageAnnonce.html'">Voir l'annonce</button> <!-- bouton vers l'annonce -->
                 <footer>
-                    <p>Disponibile à partir du 64 fév. 2192 </p>
+                    <p1>Disponibile à partir du 64 fév. 2192 </p1>
                 </footer>          
             </div>
 
@@ -182,15 +169,15 @@
                 <p>A partir de 450€/mois</p> <!-- Prix en euro/mois -->
                 <p>Localisation : 51 Allée des petits pains aux raisins, 64210, Bidart</p>
                 <p>43m² - 3 pièce - Meublé</p> <!-- Espace - nombre de pièce - Etat de meublage -->
-                <button>Voir l'annonce</button> <!-- bouton vers l'annonce -->
+                <button type="button" onclick="location.href='PageAnnonce.html'">Voir l'annonce</button> <!-- bouton vers l'annonce -->
                 <footer>
-                    <p>Disponibile à partir du 90 oct. 1816 </p>
+                    <p1>Disponibile à partir du 90 oct. 1816 </p1>
                 </footer>
             </div>
         </section>
     </section>
     
-   <footer class="finalpart">
+    <footer class="finalpart">
 
         <div class="footer-col">
             <span class="footer-title">Nos partenaires</span>
@@ -210,22 +197,16 @@
         <div class="footer-reseaux">
             <span class="footer-title">Rejoignez-nous</span>
                 <div class="reseaux-icons">
-                    <a href="#"><img src="media/pictures/insta_logo.webp" alt="Instagram"></a>
-                    <a href="#"><img src="media/pictures/linkedin_logo.jpg" alt="LinkedIn"></a>
-                    <a href="#"><img src="media/pictures/facebook_logo.jpg" alt="Facebook"></a>
-                    <a href="#"><img src="media/pictures/twitter_logo.jpg" alt="twitter"></a>
-                    <a href="#"><img src="media/pictures/youtube_logo.jpg" alt="youtube"></a>
+                    <a href="https://www.instagram.com/estia_officiel/"><img src="media/pictures/insta_logo.webp" alt="Instagram"></a>
+                    <a href="https://fr.linkedin.com/school/estia/"><img src="media/pictures/linkedin_logo.jpg" alt="LinkedIn"></a>
+                    <a href="https://www.facebook.com/ingenieurs.estia/photos/-grande-nouvelle-pour-la-communaut%C3%A9-estia-nous-sommes-ravis-dannoncer-le-lanceme/1188708266597682/"><img src="media/pictures/facebook_logo.jpg" alt="Facebook"></a>
+                    <a href="https://x.com/EstiaOfficiel"><img src="media/pictures/twitter_logo.jpg" alt="twitter"></a>
+                    <a href="https://www.bing.com/ck/a?!&&p=3872a7a7cd40708b98f29a1a249631031c1368041c906fdee9812ade16e6400fJmltdHM9MTc2NzQ4NDgwMA&ptn=3&ver=2&hsh=4&fclid=36f9f50c-73bb-6bdd-15b6-e37d72e46add&psq=estia+officiel+youtube&u=a1aHR0cHM6Ly93d3cueW91dHViZS5jb20vY2hhbm5lbC9VQzBsaEFrVXlOOER1aVRpX3hoUk5YVFE"><img src="media/pictures/youtube_logo.jpg" alt="youtube"></a>
                 </div>
         </div>
     </div>
 
     </footer>
 
-
 </body>
 </html>
-
-
-
-
-
